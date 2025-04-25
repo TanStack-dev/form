@@ -1,0 +1,90 @@
+---
+source-updated-at: '2025-04-25T12:58:29.000Z'
+translation-updated-at: '2025-04-25T20:49:40.507Z'
+id: '@tanstack/form-core'
+title: JavaScript 參考
+---
+<!-- 請勿編輯：此頁面是從類型註解自動生成的 -->
+
+# @tanstack/form-core
+
+## 類別 (Classes)
+
+- [FieldApi](classes/fieldapi.md)
+- [FormApi](classes/formapi.md)
+
+## 介面 (Interfaces)
+
+- [AnyDeepKeyAndValue](interfaces/anydeepkeyandvalue.md)
+- [ArrayDeepKeyAndValue](interfaces/arraydeepkeyandvalue.md)
+- [FieldApiOptions](interfaces/fieldapioptions.md)
+- [FieldListeners](interfaces/fieldlisteners.md)
+- [FieldOptions](interfaces/fieldoptions.md)
+- [FieldValidators](interfaces/fieldvalidators.md)
+- [FormListeners](interfaces/formlisteners.md)
+- [FormOptions](interfaces/formoptions.md)
+- [FormState](interfaces/formstate.md)
+- [FormValidators](interfaces/formvalidators.md)
+- [ObjectDeepKeyAndValue](interfaces/objectdeepkeyandvalue.md)
+- [StandardSchemaV1Issue](interfaces/standardschemav1issue.md)
+- [TupleDeepKeyAndValue](interfaces/tupledeepkeyandvalue.md)
+- [UnknownDeepKeyAndValue](interfaces/unknowndeepkeyandvalue.md)
+
+## 型別別名 (Type Aliases)
+
+- [AllObjectKeys](type-aliases/allobjectkeys.md)
+- [AllTupleKeys](type-aliases/alltuplekeys.md)
+- [AnyFieldApi](type-aliases/anyfieldapi.md)
+- [AnyFieldMeta](type-aliases/anyfieldmeta.md)
+- [AnyFieldMetaBase](type-aliases/anyfieldmetabase.md)
+- [AnyFieldMetaDerived](type-aliases/anyfieldmetaderived.md)
+- [AnyFormApi](type-aliases/anyformapi.md)
+- [AnyFormState](type-aliases/anyformstate.md)
+- [ArrayAccessor](type-aliases/arrayaccessor.md)
+- [BaseFormState](type-aliases/baseformstate.md)
+- [DeepKeyAndValueArray](type-aliases/deepkeyandvaluearray.md)
+- [DeepKeyAndValueObject](type-aliases/deepkeyandvalueobject.md)
+- [DeepKeyAndValueTuple](type-aliases/deepkeyandvaluetuple.md)
+- [DeepKeys](type-aliases/deepkeys.md)
+- [DeepKeysAndValues](type-aliases/deepkeysandvalues.md)
+- [DeepKeysAndValuesImpl](type-aliases/deepkeysandvaluesimpl.md)
+- [DeepRecord](type-aliases/deeprecord.md)
+- [DeepValue](type-aliases/deepvalue.md)
+- [DerivedFormState](type-aliases/derivedformstate.md)
+- [FieldInfo](type-aliases/fieldinfo.md)
+- [FieldMeta](type-aliases/fieldmeta.md)
+- [FieldMetaBase](type-aliases/fieldmetabase.md)
+- [FieldMetaDerived](type-aliases/fieldmetaderived.md)
+- [FieldState](type-aliases/fieldstate.md)
+- [FormValidateFn](type-aliases/formvalidatefn.md)
+- [FormValidationError](type-aliases/formvalidationerror.md)
+- [FormValidator](type-aliases/formvalidator.md)
+- [Nullable](type-aliases/nullable.md)
+- [ObjectAccessor](type-aliases/objectaccessor.md)
+- [ObjectValue](type-aliases/objectvalue.md)
+- [StandardSchemaV1](type-aliases/standardschemav1.md)
+- [TStandardSchemaValidatorIssue](type-aliases/tstandardschemavalidatorissue.md)
+- [TStandardSchemaValidatorValue](type-aliases/tstandardschemavalidatorvalue.md)
+- [TupleAccessor](type-aliases/tupleaccessor.md)
+- [UnknownAccessor](type-aliases/unknownaccessor.md)
+- [UnwrapFieldAsyncValidateOrFn](type-aliases/unwrapfieldasyncvalidateorfn.md)
+- [UnwrapFieldValidateOrFn](type-aliases/unwrapfieldvalidateorfn.md)
+- [UnwrapFormAsyncValidateOrFn](type-aliases/unwrapformasyncvalidateorfn.md)
+- [UnwrapFormValidateOrFn](type-aliases/unwrapformvalidateorfn.md)
+- [Updater](type-aliases/updater.md)
+- [UpdaterFn](type-aliases/updaterfn.md)
+- [ValidationError](type-aliases/validationerror.md)
+- [ValidationMeta](type-aliases/validationmeta.md)
+- [ValidationSource](type-aliases/validationsource.md)
+
+## 變數 (Variables)
+
+- [standardSchemaValidators](variables/standardschemavalidators.md)
+
+## 函式 (Functions)
+
+- [formOptions](functions/formoptions.md)
+- [isGlobalFormValidationError](functions/isglobalformvalidationerror.md)
+- [isStandardSchemaValidator](functions/isstandardschemavalidator.md)
+- [mergeForm](functions/mergeform.md)
+- [shallow](functions/shallow.md)
