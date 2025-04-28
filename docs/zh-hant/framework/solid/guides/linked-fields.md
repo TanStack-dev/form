@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:47:37.261Z'
 id: linked-fields
 title: 關聯欄位
 ---
+
 你可能會遇到需要將兩個表單欄位連結在一起的情況：當其中一個欄位需要根據另一個欄位的值變更進行驗證時。
 一個常見的使用情境是當你同時有 `password` 和 `confirm_password` 欄位時，
 你會希望當 `password` 的值不匹配時，`confirm_password` 能顯示錯誤；

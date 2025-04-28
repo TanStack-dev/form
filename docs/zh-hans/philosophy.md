@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:08:37.807Z'
 id: philosophy
 title: 设计理念
 ---
+
 每个成熟的项目都应具备指导其开发的核心哲学。缺乏核心理念的开发会陷入无休止的决策困境，最终导致 API 设计薄弱。
 
 本文档阐述了驱动 TanStack Form 开发与功能设计的核心原则。

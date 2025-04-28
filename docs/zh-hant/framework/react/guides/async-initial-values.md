@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:33:29.078Z'
 id: async-initial-values
 title: 非同步初始值
 ---
+
 假設您想從 API 獲取一些資料，並將其作為表單的初始值使用。
 
 雖然這個問題表面上看起來很簡單，但背後可能隱藏著您尚未考慮到的複雜性。

@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:49:20.614Z'
 id: form-validation
 title: 表單驗證
 ---
+
 TanStack Form 的核心功能之一是驗證 (validation) 概念。TanStack Form 讓驗證具有高度可自訂性：
 
 - 您可以控制驗證的時機（在變更時、輸入時、失焦時、提交時...）

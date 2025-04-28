@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:31:16.928Z'
 id: typescript
 title: TypeScript
 ---
+
 TanStack Form 完全使用 **TypeScript** 編寫，具備最高品質的泛型 (generics)、約束 (constraints) 和介面 (interfaces)，確保函式庫與您的專案能達到最高程度的型別安全 (type-safe)！
 
 注意事項：

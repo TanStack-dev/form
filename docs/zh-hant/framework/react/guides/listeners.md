@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:33:46.836Z'
 id: listeners
 title: 監聽器
 ---
+
 ## 事件觸發的副作用 (Side effects)
 
 當您需要「影響」或「回應」觸發事件時，可以使用監聽器 API (listener API)。舉例來說，如果您作為開發者，想要在某個欄位變更時重置另一個表單欄位，就可以使用監聽器 API。

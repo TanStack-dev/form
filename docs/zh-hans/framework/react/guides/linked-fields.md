@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:08:50.083Z'
 id: linked-fields
 title: 关联字段
 ---
+
 ## 联动两个表单字段
 
 在某些场景下，您可能需要将两个字段进行联动：当其中一个字段的值发生变化时，另一个字段需要重新验证。一个典型用例是同时存在 `password` 和 `confirm_password` 字段的情况，此时需要确保当 `password` 字段值不匹配时，`confirm_password` 字段能立即显示错误——无论哪个字段触发了值的变化。

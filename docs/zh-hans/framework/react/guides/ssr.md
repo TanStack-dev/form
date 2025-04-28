@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:11:11.947Z'
 id: ssr
 title: SSR/TanStack Start/Next.js
 ---
+
 TanStack Form 开箱即支持 React，兼容 服务端渲染 (SSR) 并保持框架无关性。但需要根据您选择的元框架进行特定配置。
 
 目前我们支持以下元框架：
@@ -323,13 +324,13 @@ export const ClientComp = () => {
 此处我们结合使用了 [React 的 useActionState 钩子](https://playfulprogramming.com/posts/what-is-use-action-state-and-form-status) 和 TanStack Form 的 useTransform 钩子来合并服务端动作返回的状态与表单状态。
 
 > 如果在 Next.js 应用中遇到以下错误：
-> 
+>
 > ```typescript
 > x 您正在导入需要 useState 的组件。此 React 钩子仅在客户端组件中有效。解决方法是在文件（或其父级）中添加 "use client" 指令
 > ```
-> 
+>
 > 这是因为您没有从 `@tanstack/react-form/nextjs` 导入服务端代码。请确保根据运行环境导入正确的模块。
-> 
+>
 > [这是 Next.js 的已知限制](https://github.com/phryneas/rehackt)。其他元框架通常不会出现此问题。
 
 ## 在 Remix 中使用 TanStack Form

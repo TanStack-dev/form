@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:31:39.116Z'
 id: philosophy
 title: 設計理念
 ---
+
 每個成熟的專案都應該有其指導開發的核心哲學。若缺乏核心理念，開發過程可能會陷入無止境的決策困境，最終導致 API 設計薄弱。
 
 本文概述了驅動 TanStack Form 開發與功能設計的核心原則。
@@ -45,11 +46,13 @@ TanStack Form 的設計強調靈活性與可定制化。雖然多數表單可能
 當編寫足夠正確的 TanStack Form 程式碼時，除了對運行時值的型別轉換外，您應該無法區分 JavaScript 與 TypeScript 的使用差異。
 
 不建議寫法：
+
 ```typescript
 useForm<MyForm>()
 ```
 
 建議寫法：
+
 ```typescript
 interface Person {
   name: string

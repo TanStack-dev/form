@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:10:42.863Z'
 id: form-composition
 title: 表单组合
 ---
+
 # 表单组合 (Form Composition)
 
 对 TanStack Form 的一个常见批评是其开箱即用的冗长性。虽然这对于教育目的可能有用——有助于强化对 API 的理解——但在生产用例中并不理想。

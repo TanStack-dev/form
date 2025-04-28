@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:47:50.231Z'
 id: basic-concepts
 title: 基本概念
 ---
+
 本頁介紹 `@tanstack/lit-form` 函式庫中使用的基本概念與術語。熟悉這些概念將幫助您更好地理解並運用該函式庫及其與 Lit 的整合方式。
 
 ## 表單選項 (Form Options)

@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:09:04.203Z'
 id: submission-handling
 title: 提交处理
 ---
+
 在需要处理多种表单提交类型的场景下（例如，一个表单同时包含导航至子表单的按钮和执行标准提交的按钮），可以利用 `onSubmitMeta` 属性和 `handleSubmit` 函数的重载机制。
 
 ## 基础用法

@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:34:22.749Z'
 id: custom-errors
 title: 自訂錯誤
 ---
+
 TanStack Form 提供了完整的靈活性，讓您可以從驗證器返回任何類型的錯誤值。字串錯誤是最常見且易於處理的，但該函式庫允許您從驗證器返回任何類型的值。
 
 一般情況下，任何真值 (truthy value) 都會被視為錯誤，並將表單或欄位標記為無效；而假值 (falsy value)（`false`、`undefined`、`null` 等）則表示沒有錯誤，表單或欄位是有效的。

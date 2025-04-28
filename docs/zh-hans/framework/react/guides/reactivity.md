@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:08:53.631Z'
 id: reactivity
 title: 响应式
 ---
+
 Tanstack Form 在与表单交互时不会触发重新渲染。因此您可能会发现直接使用表单或字段状态值无法获得预期效果。
 
 如需访问响应式值，您需要通过以下两种方法之一进行订阅：`useStore` 钩子或 `form.Subscribe` 组件。

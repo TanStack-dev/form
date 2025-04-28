@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:39:00.310Z'
 id: ssr
 title: 伺服器渲染 (SSR)/TanStack Start/Next.js
 ---
+
 TanStack Form 預設即與 React 相容，支援 `SSR` 且為框架無關 (framework-agnostic)。但根據您選擇的框架，仍需進行特定配置。
 
 目前我們支援以下元框架 (meta-frameworks)：

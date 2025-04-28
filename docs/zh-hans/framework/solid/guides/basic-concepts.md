@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:10:54.326Z'
 id: basic-concepts
 title: 基本概念
 ---
+
 本页面介绍了 `@tanstack/solid-form` 库中使用的基本概念和术语。熟悉这些概念将帮助您更好地理解和使用该库。
 
 ## 表单选项 (Form Options)
@@ -150,7 +151,7 @@ import { z } from 'zod'
         await new Promise((resolve) => setTimeout(resolve, 1000))
         return !value.includes('error')
       },
-      { message: '名中不能包含"error"' }
+      { message: '名中不能包含"error"' },
     ),
   }}
 />

@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:33:27.381Z'
 id: submission-handling
 title: 提交處理
 ---
+
 在需要處理多種表單提交類型的情境下，例如一個表單同時包含導向子表單的按鈕與處理標準提交的按鈕，您可以利用 `onSubmitMeta` 屬性與 `handleSubmit` 函式的多載功能來實現。
 
 ## 基本用法

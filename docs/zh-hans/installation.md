@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:08:27.039Z'
 id: installation
 title: 安装
 ---
+
 ## 安装
 
 TanStack Form 兼容多种前端框架，包括 React、Vue 和 Solid。要结合您选用的框架使用 TanStack Form，请通过您偏好的包管理器安装对应的适配器：

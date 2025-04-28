@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:32:32.369Z'
 id: quick-start
 title: 快速開始
 ---
+
 TanStack Form 與您過去使用的大多數表單函式庫截然不同。它專為大規模生產環境設計，著重於類型安全、效能和組合性，提供無與倫比的開發體驗。
 
 因此，我們圍繞函式庫的使用發展出一套[哲學理念](/form/latest/docs/philosophy)，重視可擴展性和長期的開發體驗，而非簡短可分享的程式碼片段。

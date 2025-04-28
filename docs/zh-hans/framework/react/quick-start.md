@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:08:52.516Z'
 id: quick-start
 title: 快速开始
 ---
+
 TanStack Form 与你以往使用的大多数表单库不同。它专为大规模生产环境设计，注重类型安全、性能与组合能力，旨在提供无与伦比的开发者体验。
 
 为此，我们制定了[库的使用哲学](/form/latest/docs/philosophy)，更重视可扩展性和长期开发者体验，而非简短可分享的代码片段。
@@ -109,8 +110,7 @@ const PeoplePage = () => {
       name="age"
       validators={{
         // 可选择表单级或字段级验证器
-        onChange: ({ value }) =>
-          value > 13 ? undefined : '必须年满 13 岁',
+        onChange: ({ value }) => (value > 13 ? undefined : '必须年满 13 岁'),
       }}
       children={(field) => (
         <>

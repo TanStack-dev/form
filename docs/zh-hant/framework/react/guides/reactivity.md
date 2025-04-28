@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:33:36.696Z'
 id: reactivity
 title: 響應式
 ---
+
 Tanstack Form 在與表單互動時不會觸發重新渲染 (re-renders)。因此，您可能會發現自己試圖使用表單或欄位狀態值卻無法成功。
 
 如果您想存取響應式 (reactive) 值，您需要使用以下兩種方法之一來訂閱它們：`useStore` 或 `form.Subscribe` 元件。

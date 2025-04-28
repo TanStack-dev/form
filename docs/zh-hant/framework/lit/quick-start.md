@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-25T20:31:47.922Z'
 id: quick-start
 title: 快速開始
 ---
+
 ## 快速開始
 
 使用 TanStack Form 的最低要求是建立一個 `TanstackFormController`，如下所示，並使用 `Employee` 介面作為測試表單的結構：

@@ -4,6 +4,7 @@ translation-updated-at: '2025-04-12T04:09:56.557Z'
 id: custom-errors
 title: 自定义错误
 ---
+
 TanStack Form 为验证器返回的错误值类型提供了完全的灵活性。字符串错误是最常见且易于处理的类型，但该库允许您从验证器中返回任何类型的值。
 
 作为通用规则，任何真值（truthy value）都会被视作错误，并将表单或字段标记为无效；而假值（falsy values，如 `false`、`undefined`、`null` 等）则表示没有错误，表单或字段有效。
@@ -32,8 +33,7 @@ const form = useForm({
     onChange: ({ value }) => {
       return {
         fields: {
-          username:
-            value.username.length < 3 ? '用户名过短' : undefined,
+          username: value.username.length < 3 ? '用户名过短' : undefined,
           email: !value.email.includes('@') ? '无效的邮箱地址' : undefined,
         },
       }
@@ -73,9 +73,7 @@ const form = useForm({
 {
   /* TypeScript 会根据验证器推断错误类型为数字 */
 }
-;<div className="error">
-  您还需要 {field.state.meta.errors[0]} 年才符合资格
-</div>
+;<div className="error">您还需要 {field.state.meta.errors[0]} 年才符合资格</div>
 ```
 
 ### 布尔类型
