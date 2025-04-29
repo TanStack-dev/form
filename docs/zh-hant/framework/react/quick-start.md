@@ -1,15 +1,15 @@
 ---
-source-updated-at: '2025-03-04T11:48:41.000Z'
-translation-updated-at: '2025-04-25T20:32:32.369Z'
+source-updated-at: '2025-04-29T10:21:58.000Z'
+translation-updated-at: '2025-04-29T23:28:37.258Z'
 id: quick-start
 title: 快速開始
 ---
 
-TanStack Form 與您過去使用的大多數表單函式庫截然不同。它專為大規模生產環境設計，著重於類型安全、效能和組合性，提供無與倫比的開發體驗。
+TanStack Form 與您以往使用過的大多數表單函式庫不同。它專為大規模生產環境設計，強調類型安全、效能和組合性，提供無與倫比的開發體驗。
 
-因此，我們圍繞函式庫的使用發展出一套[哲學理念](/form/latest/docs/philosophy)，重視可擴展性和長期的開發體驗，而非簡短可分享的程式碼片段。
+因此，我們圍繞函式庫的使用[制定了一套哲學](/form/latest/docs/philosophy)，重視可擴展性和長期開發體驗，而非簡短可分享的程式碼片段。
 
-以下是一個遵循我們最佳實踐的表單範例，讓您在短暫上手後就能快速開發高複雜度的表單：
+以下是一個遵循我們許多最佳實踐的表單範例，讓您在短暫上手後就能快速開發高複雜度的表單：
 
 ```tsx
 import React from 'react'
@@ -22,7 +22,7 @@ import { z } from 'zod'
 
 const { fieldContext, formContext } = createFormHookContexts()
 
-// 讓我們能將元件綁定到表單，保持類型安全同時減少生產環境的樣板程式碼
+// 讓我們能將元件綁定到表單上，保持類型安全同時減少生產環境的樣板程式碼
 // 定義一次即可在整個應用中生成一致的表單實例
 const { useAppForm } = createFormHook({
   fieldComponents: {
@@ -43,7 +43,7 @@ const PeoplePage = () => {
       age: 0,
     },
     validators: {
-      // 傳入 schema 或函式進行驗證
+      // 傳入 schema 或函數進行驗證
       onChange: z.object({
         username: z.string(),
         age: z.number().min(13),
@@ -86,7 +86,7 @@ const rootElement = document.getElementById('root')!
 ReactDOM.createRoot(rootElement).render(<PeoplePage />)
 ```
 
-雖然我們通常建議使用 `createFormHook` 以長期減少樣板程式碼，但我們也支援使用 `useForm` 和 `form.Field` 來建立一次性元件和其他行為：
+雖然我們通常建議使用 `createFormHook` 以長期減少樣板程式碼，但我們也支援使用 `useForm` 和 `form.Field` 來實現一次性元件和其他行為：
 
 ```tsx
 import React from 'react'
@@ -109,7 +109,7 @@ const PeoplePage = () => {
     <form.Field
       name="age"
       validators={{
-        // 可選擇表單全域或欄位專屬的驗證器
+        // 可選擇表單範圍或欄位特定的驗證器
         onChange: ({ value }) =>
           value > 13 ? undefined : 'Must be 13 or older',
       }}
@@ -122,9 +122,9 @@ const PeoplePage = () => {
             type="number"
             onChange={(e) => field.handleChange(e.target.valueAsNumber)}
           />
-          {field.state.meta.errors.length ? (
+          {!field.state.meta.isValid && (
             <em>{field.state.meta.errors.join(',')}</em>
-          ) : null}
+          )}
         </>
       )}
     />

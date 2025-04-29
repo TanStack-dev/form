@@ -1,42 +1,94 @@
 ---
-source-updated-at: '2025-03-28T15:34:36.000Z'
-translation-updated-at: '2025-04-25T20:33:27.381Z'
+source-updated-at: '2025-04-27T10:57:16.000Z'
+translation-updated-at: '2025-04-29T23:28:18.321Z'
 id: submission-handling
 title: 提交處理
 ---
 
-在需要處理多種表單提交類型的情境下，例如一個表單同時包含導向子表單的按鈕與處理標準提交的按鈕，您可以利用 `onSubmitMeta` 屬性與 `handleSubmit` 函式的多載功能來實現。
+## 傳遞額外資料至提交處理
 
-## 基本用法
+您可能需要處理多種提交行為類型，例如返回其他頁面或停留在表單上。這可以透過指定 `onSubmitMeta` 屬性來實現，此元資料將會被傳遞至 `onSubmit` 函式。
 
-首先必須定義 `form.onSubmitMeta` 屬性的預設狀態：
+> 注意：若 `form.handleSubmit()` 在沒有元資料的情況下被呼叫，將會使用預設值。
 
 ```tsx
-const form = useForm({
-  defaultValues: {
-    firstName: 'Rick',
-  },
-  // {} 是傳遞給 `onSubmit` 中 `meta` 屬性的預設值
-  onSubmitMeta: {} as { lastName: string },
-  onSubmit: async ({ value, meta }) => {
-    // 透過 handleSubmit 傳遞的值進行操作
-    console.log(`${value.firstName} - ${meta}`)
-  },
-})
+import { useForm } from '@tanstack/react-form'
+
+type FormMeta = {
+  submitAction: 'continue' | 'backToMenu' | null
+}
+
+// 呼叫 form.handleSubmit() 時不強制要求傳遞元資料。
+// 指定當未傳遞元資料時要使用的預設值
+const defaultMeta: FormMeta = {
+  submitAction: null,
+}
+
+function App() {
+  const form = useForm({
+    defaultValues: {
+      data: '',
+    },
+    // 定義提交時預期的元資料值
+    onSubmitMeta: defaultMeta,
+    onSubmit: async ({ value, meta }) => {
+      // 使用透過 handleSubmit 傳遞的值進行操作
+      console.log(`Selected action - ${meta.submitAction}`, value)
+    },
+  })
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+      }}
+    >
+      {/* ... */}
+      <button
+        type="submit"
+        // 覆寫 onSubmitMeta 中指定的預設值
+        onClick={() => form.handleSubmit({ submitAction: 'continue' })}
+      >
+        提交並繼續
+      </button>
+      <button
+        type="submit"
+        onClick={() => form.handleSubmit({ submitAction: 'backToMenu' })}
+      >
+        提交並返回選單
+      </button>
+    </form>
+  )
+}
 ```
 
-注意：`onSubmitMeta` 的預設狀態為 `never`，若未提供此屬性卻嘗試在 `handleSubmit` 或 `onSubmit` 中存取時，將會引發錯誤。
+## 使用標準結構描述 (Standard Schema) 轉換資料
 
-接著在呼叫 `onSubmit` 時，可以像這樣傳遞預先定義的 meta 資料：
+雖然 Tanstack Form 提供了[標準結構描述支援](./validation.md)來進行驗證，但並不會保留結構描述的輸出資料。
+
+傳遞至 `onSubmit` 函式的值永遠會是輸入資料。若要取得標準結構描述的輸出資料，請在 `onSubmit` 函式中解析它：
 
 ```tsx
-<form
-  onSubmit={(e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    form.handleSubmit({
-      lastName: 'Astley',
-    })
-  }}
-></form>
+const schema = z.object({
+  age: z.string().transform((age) => Number(age)),
+})
+
+// Tanstack Form 使用標準結構描述的輸入類型
+const defaultValues: z.input<typeof schema> = {
+  age: '13',
+}
+
+const form = useForm({
+  defaultValues,
+  validators: {
+    onChange: schema,
+  },
+  onSubmit: ({ value }) => {
+    const inputAge: string = value.age
+    // 透過結構描述解析以取得轉換後的值
+    const result = schema.parse(value)
+    const outputAge: number = result.age
+  },
+})
 ```
