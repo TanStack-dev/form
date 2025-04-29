@@ -21,7 +21,7 @@ jobs:
     steps:
       # Use the translate-docs-action
       - name: Translate documentation
-        uses: TanStack-dev/translate-docs-action@v1
+        uses: TanStack-dev/translate-docs-action@main
         with:
           # Required inputs
           api_key: ${{ secrets.OPENAI_API_KEY }}
