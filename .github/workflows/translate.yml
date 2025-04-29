@@ -3,6 +3,8 @@ name: Translate Documentation
 on:
   schedule:
     - cron: '0 20 * * *' # Daily at 20:00 UTC (DeepSeek API off-peak pricing window 16:30-00:30 UTC)
+                         # Pacific Time: 1:00 PM PDT / 12:00 PM PST
+                         # Off-peak window in PT: ~9:30 AM to 5:30 PM PDT / ~8:30 AM to 4:30 PM PST
   workflow_dispatch: # Allow manual triggering
     inputs:
       target_language:
