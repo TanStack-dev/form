@@ -1,21 +1,21 @@
 ---
-source-updated-at: '2025-03-04T11:48:41.000Z'
-translation-updated-at: '2025-04-12T04:08:52.717Z'
+source-updated-at: '2025-04-29T10:21:58.000Z'
+translation-updated-at: '2025-04-29T23:23:23.045Z'
 id: overview
 title: 概述
 ---
 
-TanStack Form 是处理 Web 应用中表单的终极解决方案，提供了一种强大而灵活的表单管理方法。它具备一流的 TypeScript 支持、无头 UI 组件 (headless UI components) 和框架无关的设计 (framework-agnostic design)，简化了表单处理流程，并确保在不同前端框架中都能获得无缝体验。
+TanStack Form 是处理 Web 应用中表单的终极解决方案，提供强大而灵活的表单管理方法。它具备一流的 TypeScript 支持、无头 UI 组件 (headless UI components) 和框架无关的设计 (framework-agnostic design)，能简化表单处理并确保在不同前端框架中实现无缝体验。
 
 ## 动机
 
-大多数 Web 框架并未提供全面的表单处理方案，开发者不得不自行实现定制方案或依赖功能有限的库。这通常会导致一致性缺失、性能低下以及开发时间增加。TanStack Form 旨在通过提供一套强大易用的全功能表单管理方案来解决这些问题。
+大多数 Web 框架并未提供全面的表单处理方案，开发者只能自行实现定制方案或依赖功能有限的库。这通常会导致一致性缺失、性能不佳和开发时间增加。TanStack Form 旨在通过提供一套强大易用的表单管理一体化方案来解决这些问题。
 
 使用 TanStack Form，开发者可以应对以下常见的表单相关挑战：
 
 - 响应式数据绑定 (Reactive data binding) 和状态管理 (state management)
 - 复杂验证 (validation) 和错误处理 (error handling)
-- 无障碍访问 (accessibility) 和响应式设计 (responsive design)
+- 无障碍性 (accessibility) 和响应式设计 (responsive design)
 - 国际化 (internationalization) 和本地化 (localization)
 - 跨平台兼容性 (cross-platform compatibility) 和自定义样式 (custom styling)
 
@@ -23,7 +23,7 @@ TanStack Form 是处理 Web 应用中表单的终极解决方案，提供了一�
 
 ## 少说多做，直接看代码！
 
-下面的示例展示了 TanStack Form 与 React 框架适配器配合使用的实际效果：
+以下示例展示了 TanStack Form 与 React 框架适配器的实际应用：
 
 [在 CodeSandbox 中打开](https://codesandbox.io/s/github/tanstack/form/tree/main/examples/react/simple)
 
@@ -36,7 +36,7 @@ import type { AnyFieldApi } from '@tanstack/react-form'
 function FieldInfo({ field }: { field: AnyFieldApi }) {
   return (
     <>
-      {field.state.meta.isTouched && field.state.meta.errors.length ? (
+      {field.state.meta.isTouched && !field.state.meta.isValid ? (
         <em>{field.state.meta.errors.join(', ')}</em>
       ) : null}
       {field.state.meta.isValidating ? 'Validating...' : null}
@@ -141,4 +141,4 @@ createRoot(rootElement).render(<App />)
 
 ## 既然被说服了，接下来该怎么做？
 
-- 通过我们的详细[入门指南](../installation)和[API 参考文档](../reference/classes/formapi)按自己的节奏学习 TanStack Form
+- 通过我们详尽的[入门指南](../installation)和[API 参考文档](../reference/classes/formapi)按自己的节奏学习 TanStack Form
