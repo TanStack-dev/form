@@ -20,6 +20,8 @@ permissions:
 jobs:
   test:
     name: Test
+    # Add this condition to skip in forks
+    if: github.repository == 'TanStack/form'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,6 +49,8 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   preview:
     name: Preview
+    # Add this condition to skip in forks
+    if: github.repository == 'TanStack/form'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
