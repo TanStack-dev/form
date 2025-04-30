@@ -1,0 +1,612 @@
+{
+  "$schema": "https://raw.githubusercontent.com/TanStack/tanstack.com/main/tanstack-docs-config.schema.json",
+  "docSearch": {
+    "appId": "",
+    "apiKey": "",
+    "indexName": "tanstack-form"
+  },
+  "sections": [
+    {
+      "label": "البدء",
+      "children": [
+        {
+          "label": "نظرة عامة",
+          "to": "overview"
+        },
+        {
+          "label": "التثبيت",
+          "to": "installation"
+        },
+        {
+          "label": "الفلسفة",
+          "to": "philosophy"
+        },
+        {
+          "label": "المقارنة",
+          "to": "comparison"
+        },
+        {
+          "label": "TypeScript",
+          "to": "typescript"
+        }
+      ],
+      "frameworks": [
+        {
+          "label": "react",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/react/quick-start"
+            }
+          ]
+        },
+        {
+          "label": "vue",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/vue/quick-start"
+            }
+          ]
+        },
+        {
+          "label": "angular",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/angular/quick-start"
+            }
+          ]
+        },
+        {
+          "label": "solid",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/solid/quick-start"
+            }
+          ]
+        },
+        {
+          "label": "lit",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/lit/quick-start"
+            }
+          ]
+        },
+        {
+          "label": "svelte",
+          "children": [
+            {
+              "label": "بدء سريع",
+              "to": "framework/svelte/quick-start"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "الدلائل",
+      "children": [],
+      "frameworks": [
+        {
+          "label": "react",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/react/guides/basic-concepts"
+            },
+            {
+              "label": "التحقق من صحة النموذج",
+              "to": "framework/react/guides/validation"
+            },
+            {
+              "label": "القيم الأولية غير المتزامنة",
+              "to": "framework/react/guides/async-initial-values"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/react/guides/arrays"
+            },
+            {
+              "label": "الحقول المرتبطة",
+              "to": "framework/react/guides/linked-fields"
+            },
+            {
+              "label": "التفاعلية",
+              "to": "framework/react/guides/reactivity"
+            },
+            {
+              "label": "المستمعون",
+              "to": "framework/react/guides/listeners"
+            },
+            {
+              "label": "الأخطاء المخصصة",
+              "to": "framework/react/guides/custom-errors"
+            },
+            {
+              "label": "معالجة الإرسال",
+              "to": "framework/react/guides/submission-handling"
+            },
+            {
+              "label": "مكتبات واجهة المستخدم",
+              "to": "framework/react/guides/ui-libraries"
+            },
+            {
+              "label": "تكوين النموذج",
+              "to": "framework/react/guides/form-composition"
+            },
+            {
+              "label": "React Native",
+              "to": "framework/react/guides/react-native"
+            },
+            {
+              "label": "SSR/TanStack Start/Next.js",
+              "to": "framework/react/guides/ssr"
+            },
+            {
+              "label": "تصحيح الأخطاء",
+              "to": "framework/react/guides/debugging"
+            }
+          ]
+        },
+        {
+          "label": "vue",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/vue/guides/basic-concepts"
+            },
+            {
+              "label": "التحقق من صحة النموذج",
+              "to": "framework/vue/guides/validation"
+            },
+            {
+              "label": "القيم الأولية غير المتزامنة",
+              "to": "framework/vue/guides/async-initial-values"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/vue/guides/arrays"
+            },
+            {
+              "label": "الحقول المرتبطة",
+              "to": "framework/vue/guides/linked-fields"
+            }
+          ]
+        },
+        {
+          "label": "angular",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/angular/guides/basic-concepts"
+            },
+            {
+              "label": "التحقق من صحة النموذج",
+              "to": "framework/angular/guides/validation"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/angular/guides/arrays"
+            }
+          ]
+        },
+        {
+          "label": "solid",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/solid/guides/basic-concepts"
+            },
+            {
+              "label": "التحقق من صحة النموذج",
+              "to": "framework/solid/guides/validation"
+            },
+            {
+              "label": "القيم الأولية غير المتزامنة",
+              "to": "framework/solid/guides/async-initial-values"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/solid/guides/arrays"
+            },
+            {
+              "label": "الحقول المرتبطة",
+              "to": "framework/solid/guides/linked-fields"
+            }
+          ]
+        },
+        {
+          "label": "lit",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/lit/guides/basic-concepts"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/lit/guides/arrays"
+            }
+          ]
+        },
+        {
+          "label": "svelte",
+          "children": [
+            {
+              "label": "المفاهيم الأساسية",
+              "to": "framework/svelte/guides/basic-concepts"
+            },
+            {
+              "label": "التحقق من صحة النموذج",
+              "to": "framework/svelte/guides/validation"
+            },
+            {
+              "label": "القيم الأولية غير المتزامنة",
+              "to": "framework/svelte/guides/async-initial-values"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/svelte/guides/arrays"
+            },
+            {
+              "label": "الحقول المرتبطة",
+              "to": "framework/svelte/guides/linked-fields"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "collapsible": true,
+      "defaultCollapsed": true,
+      "label": "مرجع API",
+      "children": [
+        {
+          "label": "مرجع JavaScript",
+          "to": "reference/index"
+        },
+        {
+          "label": "الفئات / FieldApi",
+          "to": "reference/classes/fieldapi"
+        },
+        {
+          "label": "الفئات / FormApi",
+          "to": "reference/classes/formapi"
+        },
+        {
+          "label": "الوظائف / formOptions",
+          "to": "reference/functions/formoptions"
+        },
+        {
+          "label": "الوظائف / mergeForm",
+          "to": "reference/functions/mergeform"
+        },
+        {
+          "label": "واجهات / FieldApiOptions",
+          "to": "reference/interfaces/fieldapioptions"
+        },
+        {
+          "label": "واجهات / FieldOptions",
+          "to": "reference/interfaces/fieldoptions"
+        },
+        {
+          "label": "واجهات / FieldValidators",
+          "to": "reference/interfaces/fieldvalidators"
+        },
+        {
+          "label": "واجهات / FormOptions",
+          "to": "reference/interfaces/formoptions"
+        },
+        {
+          "label": "واجهات / FormValidators",
+          "to": "reference/interfaces/formvalidators"
+        },
+        {
+          "label": "الأنواع / DeepKeys",
+          "to": "reference/type-aliases/deepkeys"
+        },
+        {
+          "label": "الأنواع / DeepValue",
+          "to": "reference/type-aliases/deepvalue"
+        },
+        {
+          "label": "الأنواع / FieldInfo",
+          "to": "reference/type-aliases/fieldinfo"
+        },
+        {
+          "label": "الأنواع / FieldMeta",
+          "to": "reference/type-aliases/fieldmeta"
+        },
+        {
+          "label": "الأنواع / FieldState",
+          "to": "reference/type-aliases/fieldstate"
+        },
+        {
+          "label": "الأنواع / BaseFormState",
+          "to": "reference/type-aliases/baseformstate"
+        },
+        {
+          "label": "الأنواع / DerivedFormState",
+          "to": "reference/type-aliases/derivedformstate"
+        },
+        {
+          "label": "الأنواع / Updater",
+          "to": "reference/type-aliases/updater"
+        },
+        {
+          "label": "الأنواع / UpdaterFn",
+          "to": "reference/type-aliases/updaterfn"
+        },
+        {
+          "label": "الأنواع / ValidationError",
+          "to": "reference/type-aliases/validationerror"
+        },
+        {
+          "label": "الأنواع / ValidationMeta",
+          "to": "reference/type-aliases/validationmeta"
+        }
+      ],
+      "frameworks": [
+        {
+          "label": "react",
+          "children": [
+            {
+              "label": "مرجع React",
+              "to": "framework/react/reference/index"
+            },
+            {
+              "label": "الوظائف / Field",
+              "to": "framework/react/reference/functions/field"
+            },
+            {
+              "label": "الوظائف / useField",
+              "to": "framework/react/reference/functions/usefield"
+            },
+            {
+              "label": "الوظائف / useForm",
+              "to": "framework/react/reference/functions/useform"
+            },
+            {
+              "label": "الوظائف / useTransform",
+              "to": "framework/react/reference/functions/usetransform"
+            },
+            {
+              "label": "الأنواع / FieldComponent",
+              "to": "framework/react/reference/type-aliases/fieldcomponent"
+            },
+            {
+              "label": "الأنواع / UseField",
+              "to": "framework/react/reference/type-aliases/usefield"
+            }
+          ]
+        },
+        {
+          "label": "vue",
+          "children": [
+            {
+              "label": "مرجع Vue",
+              "to": "framework/vue/reference/index"
+            },
+            {
+              "label": "الوظائف / Field",
+              "to": "framework/vue/reference/functions/field"
+            },
+            {
+              "label": "الوظائف / useField",
+              "to": "framework/vue/reference/functions/usefield"
+            },
+            {
+              "label": "الوظائف / useForm",
+              "to": "framework/vue/reference/functions/useform"
+            },
+            {
+              "label": "الأنواع / FieldComponent",
+              "to": "framework/vue/reference/type-aliases/fieldcomponent"
+            },
+            {
+              "label": "الأنواع / UseField",
+              "to": "framework/vue/reference/type-aliases/usefield"
+            }
+          ]
+        },
+        {
+          "label": "solid",
+          "children": [
+            {
+              "label": "مرجع Solid",
+              "to": "framework/solid/reference/index"
+            },
+            {
+              "label": "الوظائف / createField",
+              "to": "framework/solid/reference/functions/createfield"
+            },
+            {
+              "label": "الوظائف / createForm",
+              "to": "framework/solid/reference/functions/createform"
+            },
+            {
+              "label": "الوظائف / Field",
+              "to": "framework/solid/reference/functions/field"
+            },
+            {
+              "label": "الأنواع / CreateField",
+              "to": "framework/solid/reference/type-aliases/createfield"
+            },
+            {
+              "label": "الأنواع / FieldComponent",
+              "to": "framework/solid/reference/type-aliases/fieldcomponent"
+            }
+          ]
+        },
+        {
+          "label": "lit",
+          "children": [
+            {
+              "label": "مرجع Lit",
+              "to": "framework/lit/reference/index"
+            },
+            {
+              "label": "الفئات / TanStackFormController",
+              "to": "framework/lit/reference/tanstackformcontroller"
+            }
+          ]
+        },
+        {
+          "label": "angular",
+          "children": [
+            {
+              "label": "مرجع Angular",
+              "to": "framework/angular/reference/index"
+            },
+            {
+              "label": "الفئات / TanStackField",
+              "to": "framework/angular/reference/classes/tanstackfield"
+            },
+            {
+              "label": "الوظائف / injectForm",
+              "to": "framework/angular/reference/functions/injectform"
+            },
+            {
+              "label": "الوظائف / injectStore",
+              "to": "framework/angular/reference/functions/injectstore"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "موارد المجتمع",
+      "children": [],
+      "frameworks": [
+        {
+          "label": "react",
+          "children": [
+            {
+              "label": "درس Balastrong",
+              "to": "framework/react/community/balastrong-tutorial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "الأمثلة",
+      "children": [],
+      "frameworks": [
+        {
+          "label": "react",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/react/examples/simple"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/react/examples/array"
+            },
+            {
+              "label": "تكوين النموذج",
+              "to": "framework/react/examples/large-form"
+            },
+            {
+              "label": "تكامل TanStack Query",
+              "to": "framework/react/examples/query-integration"
+            },
+            {
+              "label": "المخطط القياسي",
+              "to": "framework/react/examples/standard-schema"
+            },
+            {
+              "label": "TanStack Start",
+              "to": "framework/react/examples/tanstack-start"
+            },
+            {
+              "label": "إجراءات الخادم Next",
+              "to": "framework/react/examples/next-server-actions"
+            },
+            {
+              "label": "Remix",
+              "to": "framework/react/examples/remix"
+            },
+            {
+              "label": "مكتبات واجهة المستخدم",
+              "to": "framework/react/examples/ui-libraries"
+            },
+            {
+              "label": "أخطاء الحقول من مدققات النموذج",
+              "to": "framework/react/examples/field-errors-from-form-validators"
+            }
+          ]
+        },
+        {
+          "label": "vue",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/vue/examples/simple"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/vue/examples/array"
+            }
+          ]
+        },
+        {
+          "label": "angular",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/angular/examples/simple"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/angular/examples/array"
+            }
+          ]
+        },
+        {
+          "label": "solid",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/solid/examples/simple"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/solid/examples/array"
+            }
+          ]
+        },
+        {
+          "label": "lit",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/lit/examples/simple"
+            },
+            {
+              "label": "مكتبات واجهة المستخدم",
+              "to": "framework/lit/examples/ui-libraries"
+            }
+          ]
+        },
+        {
+          "label": "svelte",
+          "children": [
+            {
+              "label": "بسيط",
+              "to": "framework/svelte/examples/simple"
+            },
+            {
+              "label": "المصفوفات",
+              "to": "framework/svelte/examples/array"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
