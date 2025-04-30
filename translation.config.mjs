@@ -111,5 +111,5 @@ With TanStack Form, developers can tackle common form-related challenges such as
 - Cross-platform compatibility and custom styling
 
 By providing a complete solution for these challenges, TanStack Form empowers developers to build robust and user-friendly forms with ease.`,
-  ignore: 'reference/**,framework/*/reference/**',
+  copyPath: 'reference/**,framework/*/reference/**',
 }
