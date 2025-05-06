@@ -107,7 +107,7 @@
               "to": "framework/react/guides/async-initial-values"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/react/guides/arrays"
             },
             {
@@ -143,7 +143,7 @@
               "to": "framework/react/guides/react-native"
             },
             {
-              "label": "服务端渲染 (SSR)/TanStack Start/Next.js",
+              "label": "SSR/TanStack Start/Next.js",
               "to": "framework/react/guides/ssr"
             },
             {
@@ -168,7 +168,7 @@
               "to": "framework/vue/guides/async-initial-values"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/vue/guides/arrays"
             },
             {
@@ -189,7 +189,7 @@
               "to": "framework/angular/guides/validation"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/angular/guides/arrays"
             }
           ]
@@ -210,7 +210,7 @@
               "to": "framework/solid/guides/async-initial-values"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/solid/guides/arrays"
             },
             {
@@ -227,7 +227,7 @@
               "to": "framework/lit/guides/basic-concepts"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/lit/guides/arrays"
             }
           ]
@@ -248,7 +248,7 @@
               "to": "framework/svelte/guides/async-initial-values"
             },
             {
-              "label": "数组",
+              "label": "数组字段",
               "to": "framework/svelte/guides/arrays"
             },
             {
@@ -487,6 +487,10 @@
             {
               "label": "Balastrong 教程",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "社区教程",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }
@@ -504,39 +508,39 @@
               "to": "framework/react/examples/simple"
             },
             {
-              "label": "数组示例",
+              "label": "数组字段",
               "to": "framework/react/examples/array"
             },
             {
-              "label": "表单组合示例",
+              "label": "表单组合",
               "to": "framework/react/examples/large-form"
             },
             {
-              "label": "TanStack Query 集成示例",
+              "label": "TanStack Query 集成",
               "to": "framework/react/examples/query-integration"
             },
             {
-              "label": "标准模式示例",
+              "label": "标准模式",
               "to": "framework/react/examples/standard-schema"
             },
             {
-              "label": "TanStack Start 示例",
+              "label": "TanStack Start",
               "to": "framework/react/examples/tanstack-start"
             },
             {
-              "label": "Next 服务端操作示例",
+              "label": "Next 服务端操作",
               "to": "framework/react/examples/next-server-actions"
             },
             {
-              "label": "Remix 示例",
+              "label": "Remix",
               "to": "framework/react/examples/remix"
             },
             {
-              "label": "UI 库示例",
+              "label": "UI 库",
               "to": "framework/react/examples/ui-libraries"
             },
             {
-              "label": "表单验证器字段错误示例",
+              "label": "表单验证器字段错误",
               "to": "framework/react/examples/field-errors-from-form-validators"
             }
           ]
@@ -549,7 +553,7 @@
               "to": "framework/vue/examples/simple"
             },
             {
-              "label": "数组示例",
+              "label": "数组字段",
               "to": "framework/vue/examples/array"
             }
           ]
@@ -562,7 +566,7 @@
               "to": "framework/angular/examples/simple"
             },
             {
-              "label": "数组示例",
+              "label": "数组字段",
               "to": "framework/angular/examples/array"
             }
           ]
@@ -575,7 +579,7 @@
               "to": "framework/solid/examples/simple"
             },
             {
-              "label": "数组示例",
+              "label": "数组字段",
               "to": "framework/solid/examples/array"
             }
           ]
@@ -588,7 +592,7 @@
               "to": "framework/lit/examples/simple"
             },
             {
-              "label": "UI 库示例",
+              "label": "UI 库",
               "to": "framework/lit/examples/ui-libraries"
             }
           ]
@@ -601,7 +605,7 @@
               "to": "framework/svelte/examples/simple"
             },
             {
-              "label": "数组示例",
+              "label": "数组字段",
               "to": "framework/svelte/examples/array"
             }
           ]

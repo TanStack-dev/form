@@ -487,6 +487,10 @@
             {
               "label": "Tutoriel de Balastrong",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "Tutoriels communautaires",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }

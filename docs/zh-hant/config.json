@@ -7,7 +7,7 @@
   },
   "sections": [
     {
-      "label": "入門指南",
+      "label": "快速入門",
       "children": [
         {
           "label": "概述",
@@ -143,7 +143,7 @@
               "to": "framework/react/guides/react-native"
             },
             {
-              "label": "伺服器渲染 (SSR)/TanStack Start/Next.js",
+              "label": "SSR/TanStack Start/Next.js",
               "to": "framework/react/guides/ssr"
             },
             {
@@ -487,6 +487,10 @@
             {
               "label": "Balastrong 教學",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "社群教學",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }
@@ -524,7 +528,7 @@
               "to": "framework/react/examples/tanstack-start"
             },
             {
-              "label": "Next 伺服器動作範例",
+              "label": "Next Server Actions 範例",
               "to": "framework/react/examples/next-server-actions"
             },
             {

@@ -88,7 +88,7 @@
       ]
     },
     {
-      "label": "الدلائل",
+      "label": "الإرشادات",
       "children": [],
       "frameworks": [
         {
@@ -485,15 +485,19 @@
           "label": "react",
           "children": [
             {
-              "label": "درس Balastrong",
+              "label": "برنامج Balastrong التعليمي",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "برامج تعليمية من المجتمع",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }
       ]
     },
     {
-      "label": "الأمثلة",
+      "label": "أمثلة",
       "children": [],
       "frameworks": [
         {
@@ -524,7 +528,7 @@
               "to": "framework/react/examples/tanstack-start"
             },
             {
-              "label": "إجراءات الخادم Next",
+              "label": "إجراءات الخادم Next.js",
               "to": "framework/react/examples/next-server-actions"
             },
             {
