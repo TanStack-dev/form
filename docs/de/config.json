@@ -111,7 +111,7 @@
               "to": "framework/react/guides/arrays"
             },
             {
-              "label": "Verbundene Felder",
+              "label": "Verlinkte Felder",
               "to": "framework/react/guides/linked-fields"
             },
             {
@@ -172,7 +172,7 @@
               "to": "framework/vue/guides/arrays"
             },
             {
-              "label": "Verbundene Felder",
+              "label": "Verlinkte Felder",
               "to": "framework/vue/guides/linked-fields"
             }
           ]
@@ -214,7 +214,7 @@
               "to": "framework/solid/guides/arrays"
             },
             {
-              "label": "Verbundene Felder",
+              "label": "Verlinkte Felder",
               "to": "framework/solid/guides/linked-fields"
             }
           ]
@@ -252,7 +252,7 @@
               "to": "framework/svelte/guides/arrays"
             },
             {
-              "label": "Verbundene Felder",
+              "label": "Verlinkte Felder",
               "to": "framework/svelte/guides/linked-fields"
             }
           ]
@@ -487,6 +487,10 @@
             {
               "label": "Balastrongs Tutorial",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "Community-Tutorials",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }
@@ -536,7 +540,7 @@
               "to": "framework/react/examples/ui-libraries"
             },
             {
-              "label": "Feldfehler von Formularvalidierern",
+              "label": "Feld-Fehler von Formularvalidatoren",
               "to": "framework/react/examples/field-errors-from-form-validators"
             }
           ]

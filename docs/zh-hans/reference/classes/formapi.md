@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-04-30T22:25:38.116Z'
+source-updated-at: '2025-05-06T20:51:58.000Z'
+translation-updated-at: '2025-05-06T22:50:15.492Z'
 id: FormApi
 title: FormApi
 ---
@@ -163,7 +163,7 @@ Defined in: [packages/form-core/src/FormApi.ts:1912](https://github.com/TanStack
 getAllErrors(): object
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:2150](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2150)
+Defined in: [packages/form-core/src/FormApi.ts:2148](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2148)
 
 Returns form and field level errors
 
@@ -435,7 +435,7 @@ parseValuesWithSchema(schema):
 }
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:2210](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2210)
+Defined in: [packages/form-core/src/FormApi.ts:2208](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2208)
 
 Parses the form's values with a given standard schema and returns
 issues (if any). This method does NOT set any internal errors.
@@ -469,7 +469,7 @@ parseValuesWithSchemaAsync(schema): Promise<
 }>
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:2222](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2222)
+Defined in: [packages/form-core/src/FormApi.ts:2220](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L2220)
 
 Parses the form's values with a given standard schema and returns
 issues (if any). This method does NOT set any internal errors.
@@ -708,7 +708,7 @@ Updates the form's errorMap
 
 ##### errorMap
 
-`ValidationErrorMap`\<`TOnMount`, `TOnChange`, `TOnChangeAsync`, `TOnBlur`, `TOnBlurAsync`, `TOnSubmit`, `TOnSubmitAsync`\>
+`ValidationErrorMap`\<[`UnwrapFormValidateOrFn`](../type-aliases/unwrapformvalidateorfn.md)\<`TOnMount`\>, [`UnwrapFormValidateOrFn`](../type-aliases/unwrapformvalidateorfn.md)\<`TOnChange`\>, [`UnwrapFormAsyncValidateOrFn`](../type-aliases/unwrapformasyncvalidateorfn.md)\<`TOnChangeAsync`\>, [`UnwrapFormValidateOrFn`](../type-aliases/unwrapformvalidateorfn.md)\<`TOnBlur`\>, [`UnwrapFormAsyncValidateOrFn`](../type-aliases/unwrapformasyncvalidateorfn.md)\<`TOnBlurAsync`\>, [`UnwrapFormValidateOrFn`](../type-aliases/unwrapformvalidateorfn.md)\<`TOnSubmit`\>, [`UnwrapFormAsyncValidateOrFn`](../type-aliases/unwrapformasyncvalidateorfn.md)\<`TOnSubmitAsync`\>, [`UnwrapFormAsyncValidateOrFn`](../type-aliases/unwrapformasyncvalidateorfn.md)\<`TOnServer`\>\>
 
 #### Returns
 
@@ -738,7 +738,7 @@ Updates the metadata of the specified field.
 
 ##### updater
 
-[`Updater`](../type-aliases/updater.md)\<[`AnyFieldMeta`](../type-aliases/anyfieldmeta.md)\>
+[`Updater`](../type-aliases/updater.md)\<[`AnyFieldMetaBase`](../type-aliases/anyfieldmetabase.md)\>
 
 #### Returns
 

@@ -95,11 +95,11 @@
           "label": "react",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/react/guides/basic-concepts"
             },
             {
-              "label": "Валидация формы",
+              "label": "Проверка формы",
               "to": "framework/react/guides/validation"
             },
             {
@@ -156,11 +156,11 @@
           "label": "vue",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/vue/guides/basic-concepts"
             },
             {
-              "label": "Валидация формы",
+              "label": "Проверка формы",
               "to": "framework/vue/guides/validation"
             },
             {
@@ -181,11 +181,11 @@
           "label": "angular",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/angular/guides/basic-concepts"
             },
             {
-              "label": "Валидация формы",
+              "label": "Проверка формы",
               "to": "framework/angular/guides/validation"
             },
             {
@@ -198,11 +198,11 @@
           "label": "solid",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/solid/guides/basic-concepts"
             },
             {
-              "label": "Валидация формы",
+              "label": "Проверка формы",
               "to": "framework/solid/guides/validation"
             },
             {
@@ -223,7 +223,7 @@
           "label": "lit",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/lit/guides/basic-concepts"
             },
             {
@@ -236,11 +236,11 @@
           "label": "svelte",
           "children": [
             {
-              "label": "Основные концепции",
+              "label": "Основные понятия",
               "to": "framework/svelte/guides/basic-concepts"
             },
             {
-              "label": "Валидация формы",
+              "label": "Проверка формы",
               "to": "framework/svelte/guides/validation"
             },
             {
@@ -487,6 +487,10 @@
             {
               "label": "Учебник Balastrong",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "Учебники сообщества",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }

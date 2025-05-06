@@ -487,6 +487,10 @@
             {
               "label": "Tutorial de Balastrong",
               "to": "framework/react/community/balastrong-tutorial"
+            },
+            {
+              "label": "Tutoriales de la comunidad",
+              "to": "framework/react/community/tutorials"
             }
           ]
         }
@@ -524,7 +528,7 @@
               "to": "framework/react/examples/tanstack-start"
             },
             {
-              "label": "Next Server Actions",
+              "label": "Acciones de servidor en Next",
               "to": "framework/react/examples/next-server-actions"
             },
             {
