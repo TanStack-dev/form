@@ -1844,7 +1844,7 @@ export class FormApi<
    */
   setFieldMeta = <TField extends DeepKeys<TFormData>>(
     field: TField,
-    updater: Updater<AnyFieldMeta>,
+    updater: Updater<AnyFieldMetaBase>,
   ) => {
     this.baseStore.setState((prev) => {
       return {
@@ -2123,25 +2123,23 @@ export class FormApi<
    */
   setErrorMap(
     errorMap: ValidationErrorMap<
-      TOnMount,
-      TOnChange,
-      TOnChangeAsync,
-      TOnBlur,
-      TOnBlurAsync,
-      TOnSubmit,
-      TOnSubmitAsync
+      UnwrapFormValidateOrFn<TOnMount>,
+      UnwrapFormValidateOrFn<TOnChange>,
+      UnwrapFormAsyncValidateOrFn<TOnChangeAsync>,
+      UnwrapFormValidateOrFn<TOnBlur>,
+      UnwrapFormAsyncValidateOrFn<TOnBlurAsync>,
+      UnwrapFormValidateOrFn<TOnSubmit>,
+      UnwrapFormAsyncValidateOrFn<TOnSubmitAsync>,
+      UnwrapFormAsyncValidateOrFn<TOnServer>
     >,
   ) {
-    this.baseStore.setState(
-      (prev) =>
-        ({
-          ...prev,
-          errorMap: {
-            ...prev.errorMap,
-            ...errorMap,
-          },
-        }) as never,
-    )
+    this.baseStore.setState((prev) => ({
+      ...prev,
+      errorMap: {
+        ...prev.errorMap,
+        ...errorMap,
+      },
+    }))
   }
 
   /**
