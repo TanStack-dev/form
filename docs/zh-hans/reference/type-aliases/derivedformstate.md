@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-04-30T22:25:38.743Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:40:36.040Z'
 id: DerivedFormState
 title: DerivedFormState
 ---
@@ -76,6 +76,14 @@ isBlurred: boolean;
 ```
 
 A boolean indicating if any of the form fields have been blurred.
+
+### isDefaultValue
+
+```ts
+isDefaultValue: boolean;
+```
+
+A boolean indicating if all of the form's fields are the same as default values.
 
 ### isDirty
 

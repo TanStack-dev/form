@@ -1,13 +1,13 @@
 ---
-source-updated-at: '2025-04-16T08:45:06.000Z'
-translation-updated-at: '2025-04-30T21:36:23.772Z'
+source-updated-at: '2025-05-08T07:42:29.000Z'
+translation-updated-at: '2025-05-08T23:51:04.723Z'
 id: basic-concepts
 title: Concepts de base
 ---
 
 Cette page présente les concepts de base et la terminologie utilisés dans la bibliothèque `@tanstack/react-form`. Se familiariser avec ces concepts vous aidera à mieux comprendre et travailler avec la bibliothèque.
 
-## Options de formulaire
+## Options de formulaire (Form Options)
 
 Vous pouvez créer des options pour votre formulaire afin qu'elles puissent être partagées entre plusieurs formulaires en utilisant la fonction `formOptions`.
 
@@ -26,9 +26,9 @@ const formOpts = formOptions({
 })
 ```
 
-## Instance de formulaire
+## Instance de formulaire (Form Instance)
 
-Une Instance de formulaire est un objet qui représente un formulaire individuel et fournit des méthodes et propriétés pour travailler avec le formulaire. Vous créez une instance de formulaire en utilisant le hook `useForm` fourni par les options de formulaire. Le hook accepte un objet avec une fonction `onSubmit`, qui est appelée lorsque le formulaire est soumis.
+Une instance de formulaire (Form Instance) est un objet qui représente un formulaire individuel et fournit des méthodes et des propriétés pour travailler avec le formulaire. Vous créez une instance de formulaire en utilisant le hook `useForm` fourni par les options de formulaire. Le hook accepte un objet avec une fonction `onSubmit`, qui est appelée lorsque le formulaire est soumis.
 
 ```tsx
 const form = useForm({
@@ -59,9 +59,9 @@ const form = useForm({
 })
 ```
 
-## Champ
+## Champ (Field)
 
-Un Champ représente un seul élément de saisie de formulaire, comme un champ de texte ou une case à cocher. Les champs sont créés en utilisant le composant `form.Field` fourni par l'instance de formulaire. Le composant accepte une prop `name`, qui doit correspondre à une clé dans les valeurs par défaut du formulaire. Il accepte également une prop `children`, qui est une fonction de rendu qui prend un objet champ comme argument.
+Un champ (Field) représente un seul élément de saisie de formulaire, comme un champ de texte ou une case à cocher. Les champs sont créés en utilisant le composant `form.Field` fourni par l'instance de formulaire. Le composant accepte une prop `name`, qui doit correspondre à une clé dans les valeurs par défaut du formulaire. Il accepte également une prop `children`, qui est une fonction de rendu (render prop) prenant un objet field comme argument.
 
 Exemple :
 
@@ -81,9 +81,9 @@ Exemple :
 />
 ```
 
-## État d'un champ
+## État du champ (Field State)
 
-Chaque champ a son propre état, qui inclut sa valeur actuelle, son statut de validation, ses messages d'erreur et d'autres métadonnées. Vous pouvez accéder à l'état d'un champ en utilisant la propriété `field.state`.
+Chaque champ a son propre état (Field State), qui inclut sa valeur actuelle, son statut de validation, ses messages d'erreur et d'autres métadonnées. Vous pouvez accéder à l'état d'un champ en utilisant la propriété `field.state`.
 
 Exemple :
 
@@ -94,21 +94,44 @@ const {
 } = field.state
 ```
 
-Il existe trois états de champ qui peuvent être utiles pour voir comment l'utilisateur interagit avec un champ : un champ est _"touché"_ lorsque l'utilisateur clique/tabule dessus, _"vierge"_ jusqu'à ce que l'utilisateur modifie sa valeur, et _"modifié"_ après que la valeur a été changée. Vous pouvez vérifier ces états via les indicateurs `isTouched`, `isPristine` et `isDirty`, comme vu ci-dessous.
+Il existe trois états dans les métadonnées qui peuvent être utiles pour voir comment l'utilisateur interagit avec un champ :
+
+- _"isTouched"_, après que l'utilisateur a cliqué ou est passé sur le champ
+- _"isPristine"_, jusqu'à ce que l'utilisateur modifie la valeur du champ
+- _"isDirty"_, après que la valeur du champ a été modifiée
 
 ```tsx
 const { isTouched, isPristine, isDirty } = field.state.meta
 ```
 
-![États d'un champ](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
+![États du champ](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
 
-> **Note importante pour les utilisateurs venant de `React Hook Form`** : l'indicateur `isDirty` dans `TanStack/form` est différent de l'indicateur du même nom dans RHF.
-> Dans RHF, `isDirty = true` lorsque les valeurs du formulaire sont différentes des valeurs originales. Si l'utilisateur modifie les valeurs d'un formulaire, puis les modifie à nouveau pour revenir aux valeurs par défaut du formulaire, `isDirty` sera `false` dans RHF, mais `true` dans `TanStack/form`.
-> Les valeurs par défaut sont exposées à la fois au niveau du formulaire et du champ dans `TanStack/form` (`form.options.defaultValues`, `field.options.defaultValue`), vous pouvez donc écrire votre propre helper `isDefaultValue()` si vous avez besoin d'émuler le comportement de RHF.
+## Comprendre 'isDirty' dans différentes bibliothèques
 
-## API de champ
+État `dirty` non persistant
 
-L'API de champ est un objet passé à la fonction de rendu lors de la création d'un champ. Elle fournit des méthodes pour travailler avec l'état du champ.
+- **Bibliothèques** : React Hook Form (RHF), Formik, Final Form.
+- **Comportement** : Un champ est 'dirty' si sa valeur diffère de la valeur par défaut. Revenir à la valeur par défaut le rend 'clean' à nouveau.
+
+État `dirty` persistant
+
+- **Bibliothèques** : Angular Form, Vue FormKit.
+- **Comportement** : Un champ reste 'dirty' une fois modifié, même s'il revient à la valeur par défaut.
+
+Nous avons choisi le modèle d'état 'dirty' persistant. Pour également supporter un état 'dirty' non persistant, nous introduisons le flag `isDefault`. Ce flag agit comme l'inverse de l'état 'dirty' non persistant.
+
+```tsx
+const { isTouched, isPristine, isDirty, isDefaultValue } = field.state.meta
+
+// La ligne suivante recrée la fonctionnalité `dirty` non persistante.
+const nonPersistentIsDirty = !isDefaultValue
+```
+
+![États du champ étendus](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states-extended.png)
+
+## API de champ (Field API)
+
+L'API de champ (Field API) est un objet passé à la fonction de rendu lors de la création d'un champ. Elle fournit des méthodes pour travailler avec l'état du champ.
 
 Exemple :
 
@@ -122,7 +145,7 @@ Exemple :
 
 ## Validation
 
-`@tanstack/react-form` fournit à la fois une validation synchrone et asynchrone prête à l'emploi. Les fonctions de validation peuvent être passées au composant `form.Field` en utilisant la prop `validators`.
+`@tanstack/react-form` fournit une validation synchrone et asynchrone prête à l'emploi. Les fonctions de validation peuvent être passées au composant `form.Field` en utilisant la prop `validators`.
 
 Exemple :
 
@@ -154,13 +177,13 @@ Exemple :
 />
 ```
 
-## Validation avec des bibliothèques de schéma standard
+## Validation avec les bibliothèques de schéma standard
 
-En plus des options de validation personnalisées, nous prenons également en charge la spécification [Standard Schema](https://github.com/standard-schema/standard-schema).
+En plus des options de validation personnalisées, nous supportons également la spécification [Standard Schema](https://github.com/standard-schema/standard-schema).
 
 Vous pouvez définir un schéma en utilisant n'importe quelle bibliothèque implémentant la spécification et le passer à un validateur de formulaire ou de champ.
 
-Les bibliothèques prises en charge incluent :
+Les bibliothèques supportées incluent :
 
 - [Zod](https://zod.dev/)
 - [Valibot](https://valibot.dev/)
@@ -195,7 +218,7 @@ function App() {
 }
 ```
 
-## Réactivité
+## Réactivité (Reactivity)
 
 `@tanstack/react-form` offre diverses façons de s'abonner aux changements d'état du formulaire et des champs, notamment le hook `useStore(form.store)` et le composant `form.Subscribe`. Ces méthodes vous permettent d'optimiser les performances de rendu de votre formulaire en ne mettant à jour les composants que lorsque nécessaire.
 
@@ -214,7 +237,7 @@ const firstName = useStore(form.store, (state) => state.values.firstName)
 />
 ```
 
-Il est important de se rappeler que bien que la prop `selector` du hook `useStore` soit optionnelle, il est fortement recommandé de la fournir, car son omission entraînera des re-rendus inutiles.
+Il est important de se rappeler que bien que la prop `selector` du hook `useStore` soit optionnelle, il est fortement recommandé de la fournir, car l'omettre entraînera des re-rendus inutiles.
 
 ```tsx
 // Utilisation correcte
@@ -226,7 +249,7 @@ const store = useStore(form.store)
 
 Remarque : L'utilisation du hook `useField` pour obtenir de la réactivité est déconseillée car il est conçu pour être utilisé avec précaution dans le composant `form.Field`. Vous devriez plutôt utiliser `useStore(form.store)`.
 
-## Écouteurs
+## Écouteurs (Listeners)
 
 `@tanstack/react-form` vous permet de réagir à des déclencheurs spécifiques et de les "écouter" pour déclencher des effets secondaires.
 
@@ -244,11 +267,11 @@ Exemple :
 />
 ```
 
-Plus d'informations peuvent être trouvées sur [Écouteurs](./listeners.md)
+Plus d'informations sont disponibles sur [Écouteurs](./listeners.md)
 
-## Champs de tableau
+## Champs de tableau (Array Fields)
 
-Les champs de tableau vous permettent de gérer une liste de valeurs dans un formulaire, comme une liste de hobbies. Vous pouvez créer un champ de tableau en utilisant le composant `form.Field` avec la prop `mode="array"`.
+Les champs de tableau (Array Fields) vous permettent de gérer une liste de valeurs dans un formulaire, comme une liste de hobbies. Vous pouvez créer un champ de tableau en utilisant le composant `form.Field` avec la prop `mode="array"`.
 
 Lorsque vous travaillez avec des champs de tableau, vous pouvez utiliser les méthodes `pushValue`, `removeValue`, `swapValues` et `moveValue` des champs pour ajouter, supprimer et échanger des valeurs dans le tableau.
 
@@ -328,9 +351,9 @@ Exemple :
 />
 ```
 
-## Boutons de réinitialisation
+## Boutons de réinitialisation (Reset Buttons)
 
-Lorsque vous utilisez `<button type="reset">` en conjonction avec `form.reset()` de TanStack Form, vous devez empêcher le comportement de réinitialisation HTML par défaut pour éviter des réinitialisations inattendues des éléments de formulaire (en particulier les éléments `<select>`) à leurs valeurs HTML initiales.
+Lorsque vous utilisez `<button type="reset">` avec la fonction `form.reset()` de TanStack Form, vous devez empêcher le comportement de réinitialisation HTML par défaut pour éviter des réinitialisations inattendues des éléments de formulaire (en particulier les éléments `<select>`) à leurs valeurs HTML initiales.
 Utilisez `event.preventDefault()` dans le gestionnaire `onClick` du bouton pour empêcher la réinitialisation native du formulaire.
 
 Exemple :
@@ -360,4 +383,4 @@ Alternativement, vous pouvez utiliser `<button type="button">` pour empêcher la
 </button>
 ```
 
-Voici les concepts de base et la terminologie utilisés dans la bibliothèque `@tanstack/react-form`. Comprendre ces concepts vous aidera à travailler plus efficacement avec la bibliothèque et à créer des formulaires complexes avec facilité.
+Ce sont les concepts de base et la terminologie utilisés dans la bibliothèque `@tanstack/react-form`. Comprendre ces concepts vous aidera à travailler plus efficacement avec la bibliothèque et à créer des formulaires complexes avec facilité.

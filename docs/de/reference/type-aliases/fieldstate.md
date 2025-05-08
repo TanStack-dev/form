@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-04-30T22:41:47.852Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:47:24.835Z'
 id: FieldState
 title: FieldState
 ---
@@ -13,7 +13,7 @@ title: FieldState
 type FieldState<TParentData, TName, TData, TOnMount, TOnChange, TOnChangeAsync, TOnBlur, TOnBlurAsync, TOnSubmit, TOnSubmitAsync, TFormOnMount, TFormOnChange, TFormOnChangeAsync, TFormOnBlur, TFormOnBlurAsync, TFormOnSubmit, TFormOnSubmitAsync> = object;
 ```
 
-Defined in: [packages/form-core/src/FieldApi.ts:770](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L770)
+Defined in: [packages/form-core/src/FieldApi.ts:774](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L774)
 
 An object type representing the state of a field.
 

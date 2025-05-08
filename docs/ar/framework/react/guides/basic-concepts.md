@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-16T08:45:06.000Z'
-translation-updated-at: '2025-04-30T22:06:06.532Z'
+source-updated-at: '2025-05-08T07:42:29.000Z'
+translation-updated-at: '2025-05-08T23:54:45.818Z'
 id: basic-concepts
 title: المفاهيم الأساسية
 ---
@@ -9,7 +9,7 @@ title: المفاهيم الأساسية
 
 ## خيارات النموذج (Form Options)
 
-يمكنك إنشاء خيارات للنموذج بحيث يمكن مشاركتها بين عدة نماذج باستخدام الدالة `formOptions`.
+يمكنك إنشاء خيارات لنموذجك حتى يمكن مشاركتها بين عدة نماذج باستخدام دالة `formOptions`.
 
 مثال:
 
@@ -28,19 +28,19 @@ const formOpts = formOptions({
 
 ## نسخة النموذج (Form Instance)
 
-نسخة النموذج (Form Instance) هي كائن يمثل نموذجًا فرديًا ويوفر طرقًا وخصائص للعمل مع النموذج. يمكنك إنشاء نسخة نموذج باستخدام الخطاف `useForm` المقدم من خيارات النموذج. يقبل الخطاف كائنًا يحتوي على دالة `onSubmit`، والتي يتم استدعاؤها عند إرسال النموذج.
+نسخة النموذج (Form Instance) هي كائن يمثل نموذجًا فرديًا ويوفر طرقًا وخصائص للعمل مع النموذج. يمكنك إنشاء نسخة نموذج باستخدام الخطاف (hook) `useForm` المقدم من خيارات النموذج. يقبل الخطاف كائنًا يحتوي على دالة `onSubmit`، والتي يتم استدعاؤها عند تقديم النموذج.
 
 ```tsx
 const form = useForm({
   ...formOpts,
   onSubmit: async ({ value }) => {
-    // افعل شيئًا ببيانات النموذج
+    // القيام بشيء ما ببيانات النموذج
     console.log(value)
   },
 })
 ```
 
-يمكنك أيضًا إنشاء نسخة نموذج دون استخدام `formOptions` باستخدام واجهة `useForm` المستقلة:
+يمكنك أيضًا إنشاء نسخة نموذج دون استخدام `formOptions` باستخدام واجهة برمجة التطبيقات (API) المستقلة `useForm`:
 
 ```tsx
 interface User {
@@ -53,7 +53,7 @@ const defaultUser: User = { firstName: '', lastName: '', hobbies: [] }
 const form = useForm({
   defaultValues: defaultUser,
   onSubmit: async ({ value }) => {
-    // افعل شيئًا ببيانات النموذج
+    // القيام بشيء ما ببيانات النموذج
     console.log(value)
   },
 })
@@ -61,7 +61,7 @@ const form = useForm({
 
 ## الحقل (Field)
 
-الحقل (Field) يمثل عنصر إدخال فردي في النموذج، مثل حقل نصي أو خانة اختيار. يتم إنشاء الحقول باستخدام مكون `form.Field` المقدم من نسخة النموذج. يقبل المكون خاصية `name`، والتي يجب أن تطابق مفتاحًا في القيم الافتراضية للنموذج. كما يقبل خاصية `children`، وهي دالة عرض تأخذ كائن الحقل كوسيط.
+الحقل (Field) يمثل عنصر إدخال فردي في النموذج، مثل حقل نصي أو خانة اختيار. يتم إنشاء الحقول باستخدام مكون `form.Field` المقدم من نسخة النموذج. يقبل المكون خاصية `name`، والتي يجب أن تطابق مفتاحًا في القيم الافتراضية للنموذج. كما يقبل خاصية `children`، وهي دالة عرض (render prop) تأخذ كائن حقل كوسيط لها.
 
 مثال:
 
@@ -94,7 +94,11 @@ const {
 } = field.state
 ```
 
-هناك ثلاث حالات للحقل يمكن أن تكون مفيدة لمعرفة كيفية تفاعل المستخدم مع الحقل: الحقل يكون _"ملموسًا" (touched)_ عندما ينقر/ينتقل إليه المستخدم، _"نقيًا" (pristine)_ حتى يغير المستخدم قيمته، و _"متسخًا" (dirty)_ بعد تغيير القيمة. يمكنك التحقق من هذه الحالات عبر العلامات `isTouched`، `isPristine` و `isDirty`، كما هو موضح أدناه.
+هناك ثلاث حالات في البيانات الوصفية يمكن أن تكون مفيدة لمعرفة كيفية تفاعل المستخدم مع الحقل:
+
+- _"isTouched"_: بعد أن ينقر المستخدم/ينتقل إلى الحقل
+- _"isPristine"_: حتى يغير المستخدم قيمة الحقل
+- _"isDirty"_: بعد تغيير قيمة الحقل
 
 ```tsx
 const { isTouched, isPristine, isDirty } = field.state.meta
@@ -102,13 +106,32 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 
 ![حالات الحقل](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
 
-> **ملاحظة مهمة للمستخدمين القادمين من `React Hook Form`**: العلامة `isDirty` في `TanStack/form` تختلف عن العلامة بنفس الاسم في RHF.
-> في RHF، `isDirty = true`، عندما تكون قيم النموذج مختلفة عن القيم الأصلية. إذا قام المستخدم بتغيير القيم في نموذج، ثم غيرها مرة أخرى لينتهي بقيم تطابق القيم الافتراضية للنموذج، فإن `isDirty` ستكون `false` في RHF، ولكن `true` في `TanStack/form`.
-> القيم الافتراضية متاحة على مستوى النموذج والحقل في `TanStack/form` (`form.options.defaultValues`، `field.options.defaultValue`)، لذا يمكنك كتابة مساعد `isDefaultValue()` الخاص بك إذا كنت بحاجة إلى محاكاة سلوك RHF.
+## فهم 'isDirty' في المكتبات المختلفة
 
-## واجهة الحقل (Field API)
+حالة `dirty` غير الدائمة (Non-Persistent)
 
-واجهة الحقل (Field API) هي كائن يتم تمريره إلى دالة العرض عند إنشاء حقل. توفر طرقًا للعمل مع حالة الحقل.
+- **المكتبات**: React Hook Form (RHF), Formik, Final Form.
+- **السلوك**: الحقل يكون 'dirty' إذا اختلفت قيمته عن القيمة الافتراضية. العودة إلى القيمة الافتراضية تجعله 'نظيفًا' مرة أخرى.
+
+حالة `dirty` الدائمة (Persistent)
+
+- **المكتبات**: Angular Form, Vue FormKit.
+- **السلوك**: يبقى الحقل 'dirty' بمجرد تغييره، حتى إذا عاد إلى القيمة الافتراضية.
+
+لقد اخترنا نموذج حالة 'dirty' الدائمة. لدعم حالة 'dirty' غير الدائمة أيضًا، نقدم العلامة `isDefault`. تعمل هذه العلامة كعكس لحالة 'dirty' غير الدائمة.
+
+```tsx
+const { isTouched, isPristine, isDirty, isDefaultValue } = field.state.meta
+
+// السطر التالي يعيد إنشاء وظيفة حالة `dirty` غير الدائمة.
+const nonPersistentIsDirty = !isDefaultValue
+```
+
+![حالات الحقل الممتدة](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states-extended.png)
+
+## واجهة برمجة تطبيقات الحقل (Field API)
+
+واجهة برمجة تطبيقات الحقل (Field API) هي كائن يتم تمريره إلى دالة العرض (render prop) عند إنشاء حقل. توفر طرقًا للعمل مع حالة الحقل.
 
 مثال:
 
@@ -132,13 +155,13 @@ const { isTouched, isPristine, isDirty } = field.state.meta
   validators={{
     onChange: ({ value }) =>
       !value
-        ? 'اسم الأول مطلوب'
+        ? 'الاسم الأول مطلوب'
         : value.length < 3
-          ? 'يجب أن يكون اسم الأول على الأقل 3 أحرف'
+          ? 'يجب أن يكون الاسم الأول على الأقل 3 أحرف'
           : undefined,
     onChangeAsync: async ({ value }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000))
-      return value.includes('error') && 'غير مسموح بـ "error" في اسم الأول'
+      return value.includes('error') && 'غير مسموح بكلمة "error" في الاسم الأول'
     },
   }}
   children={(field) => (
@@ -197,7 +220,7 @@ function App() {
 
 ## التفاعلية (Reactivity)
 
-توفر `@tanstack/react-form` طرقًا مختلفة للاشتراك في تغييرات حالة النموذج والحقل، أبرزها خطاف `useStore(form.store)` ومكون `form.Subscribe`. تتيح لك هذه الطرق تحسين أداء عرض النموذج عن طريق تحديث المكونات فقط عند الضرورة.
+توفر `@tanstack/react-form` طرقًا مختلفة للاشتراك في تغييرات حالة النموذج والحقل، أبرزها الخطاف `useStore(form.store)` ومكون `form.Subscribe`. تتيح لك هذه الطرق تحسين أداء عرض النموذج عن طريق تحديث المكونات فقط عند الضرورة.
 
 مثال:
 
@@ -214,21 +237,21 @@ const firstName = useStore(form.store, (state) => state.values.firstName)
 />
 ```
 
-من المهم تذكر أنه بينما خاصية `selector` لخطاف `useStore` اختيارية، يوصى بشدة بتوفير واحدة، لأن حذفها سيؤدي إلى إعادة عرض غير ضرورية.
+من المهم تذكر أنه بينما خاصية `selector` في الخطاف `useStore` اختيارية، يوصى بشدة بتوفير واحدة، لأن حذفها سيؤدي إلى إعادة عرض غير ضرورية.
 
 ```tsx
-// استخدام صحيح
+// الاستخدام الصحيح
 const firstName = useStore(form.store, (state) => state.values.firstName)
 const errors = useStore(form.store, (state) => state.errorMap)
-// استخدام غير صحيح
+// الاستخدام غير الصحيح
 const store = useStore(form.store)
 ```
 
-ملاحظة: استخدام خطاف `useField` لتحقيق التفاعلية غير موصى به لأنه مصمم لاستخدام مدروس داخل مكون `form.Field`. قد ترغب في استخدام `useStore(form.store)` بدلاً من ذلك.
+ملاحظة: يُنصح بعدم استخدام الخطاف `useField` لتحقيق التفاعلية لأنه مصمم لاستخدام مدروس داخل مكون `form.Field`. قد ترغب في استخدام `useStore(form.store)` بدلاً من ذلك.
 
 ## المستمعون (Listeners)
 
-تسمح لك `@tanstack/react-form` بالتفاعل مع محفزات محدثة و"الاستماع" إليها لتنفيذ تأثيرات جانبية.
+تتيح لك `@tanstack/react-form` الاستجابة لمحفزات محددة و"الاستماع" إليها لتنفيذ تأثيرات جانبية.
 
 مثال:
 
@@ -244,11 +267,11 @@ const store = useStore(form.store)
 />
 ```
 
-يمكن العثور على مزيد من المعلومات في [المستمعون](./listeners.md)
+يمكن العثور على المزيد من المعلومات في [المستمعون](./listeners.md)
 
 ## حقول المصفوفة (Array Fields)
 
-تسمح حقول المصفوفة (Array Fields) بإدارة قائمة من القيم داخل النموذج، مثل قائمة الهوايات. يمكنك إنشاء حقل مصفوفة باستخدام مكون `form.Field` مع خاصية `mode="array"`.
+تتيح لك حقول المصفوفة (Array Fields) إدارة قائمة من القيم داخل النموذج، مثل قائمة الهوايات. يمكنك إنشاء حقل مصفوفة باستخدام مكون `form.Field` مع خاصية `mode="array"`.
 
 عند العمل مع حقول المصفوفة، يمكنك استخدام طرق الحقول `pushValue`، `removeValue`، `swapValues` و `moveValue` لإضافة، إزالة، وتبديل القيم في المصفوفة.
 
@@ -330,8 +353,8 @@ const store = useStore(form.store)
 
 ## أزرار إعادة التعيين (Reset Buttons)
 
-عند استخدام `<button type="reset">` بالاقتران مع `form.reset()` من TanStack Form، تحتاج إلى منع سلوك إعادة تعيين HTML الافتراضي لتجنب إعادة تعيين غير متوقعة لعناصر النموذج (خاصة عناصر `<select>`) إلى قيم HTML الأولية.
-استخدم `event.preventDefault()` داخل معالج `onClick` للزر لمنع إعادة التعيين الأصلية للنموذج.
+عند استخدام `<button type="reset">` مع دالة `form.reset()` من TanStack Form، تحتاج إلى منع سلوك إعادة تعيين HTML الافتراضي لتجنب إعادة تعيين غير متوقعة لعناصر النموذج (خاصة عناصر `<select>`) إلى قيم HTML الأولية.
+استخدم `event.preventDefault()` داخل معالج النقر (`onClick`) للزر لمنع إعادة التعيين الأصلية.
 
 مثال:
 

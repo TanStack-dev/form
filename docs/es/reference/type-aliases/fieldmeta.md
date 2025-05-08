@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-04-30T22:41:42.286Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:45:38.977Z'
 id: FieldMeta
 title: FieldMeta
 ---
@@ -13,7 +13,7 @@ title: FieldMeta
 type FieldMeta<TParentData, TName, TData, TOnMount, TOnChange, TOnChangeAsync, TOnBlur, TOnBlurAsync, TOnSubmit, TOnSubmitAsync, TFormOnMount, TFormOnChange, TFormOnChangeAsync, TFormOnBlur, TFormOnBlurAsync, TFormOnSubmit, TFormOnSubmitAsync> = FieldMetaBase<TParentData, TName, TData, TOnMount, TOnChange, TOnChangeAsync, TOnBlur, TOnBlurAsync, TOnSubmit, TOnSubmitAsync, TFormOnMount, TFormOnChange, TFormOnChangeAsync, TFormOnBlur, TFormOnBlurAsync, TFormOnSubmit, TFormOnSubmitAsync> & FieldMetaDerived<TParentData, TName, TData, TOnMount, TOnChange, TOnChangeAsync, TOnBlur, TOnBlurAsync, TOnSubmit, TOnSubmitAsync, TFormOnMount, TFormOnChange, TFormOnChangeAsync, TFormOnBlur, TFormOnBlurAsync, TFormOnSubmit, TFormOnSubmitAsync>;
 ```
 
-Defined in: [packages/form-core/src/FieldApi.ts:684](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L684)
+Defined in: [packages/form-core/src/FieldApi.ts:688](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L688)
 
 An object type representing the metadata of a field in a form.
 
