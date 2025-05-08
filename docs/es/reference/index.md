@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-25T12:58:29.000Z'
-translation-updated-at: '2025-04-30T22:41:41.726Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:45:38.961Z'
 id: '@tanstack/form-core'
 title: '@tanstack/form-core'
 ---
@@ -84,8 +84,8 @@ title: '@tanstack/form-core'
 
 ## Functions
 
+- [evaluate](functions/evaluate.md)
 - [formOptions](functions/formoptions.md)
 - [isGlobalFormValidationError](functions/isglobalformvalidationerror.md)
 - [isStandardSchemaValidator](functions/isstandardschemavalidator.md)
 - [mergeForm](functions/mergeform.md)
-- [shallow](functions/shallow.md)

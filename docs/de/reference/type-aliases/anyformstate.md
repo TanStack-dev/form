@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-27T15:56:02.000Z'
-translation-updated-at: '2025-05-06T20:21:10.146Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:47:24.850Z'
 id: AnyFormState
 title: AnyFormState
 ---
@@ -13,4 +13,4 @@ title: AnyFormState
 type AnyFormState = FormState<any, any, any, any, any, any, any, any, any>;
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:676](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L676)
+Defined in: [packages/form-core/src/FormApi.ts:680](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L680)

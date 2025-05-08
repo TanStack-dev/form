@@ -1,11 +1,11 @@
 ---
-source-updated-at: '2025-04-16T08:45:06.000Z'
-translation-updated-at: '2025-04-30T21:26:06.581Z'
+source-updated-at: '2025-05-08T07:42:29.000Z'
+translation-updated-at: '2025-05-08T23:45:38.105Z'
 id: basic-concepts
 title: 基本概念
 ---
 
-このページでは、`@tanstack/react-form` ライブラリで使用される基本的な概念と用語を紹介します。これらの概念を理解することで、ライブラリをより効果的に活用できるようになります。
+このページでは、`@tanstack/react-form` ライブラリで使用される基本概念と用語を紹介します。これらの概念を理解することで、ライブラリをより効果的に活用できるようになります。
 
 ## フォームオプション
 
@@ -28,19 +28,19 @@ const formOpts = formOptions({
 
 ## フォームインスタンス
 
-フォームインスタンスは個々のフォームを表すオブジェクトで、フォームを操作するためのメソッドとプロパティを提供します。フォームインスタンスは、フォームオプションが提供する `useForm` フックを使用して作成します。このフックは、フォームが送信されたときに呼び出される `onSubmit` 関数を含むオブジェクトを受け取ります。
+フォームインスタンスは個々のフォームを表現するオブジェクトで、フォームを操作するためのメソッドやプロパティを提供します。フォームインスタンスは、フォームオプションから提供される `useForm` フックを使用して作成します。このフックは、フォームが送信されたときに呼び出される `onSubmit` 関数を含むオブジェクトを受け取ります。
 
 ```tsx
 const form = useForm({
   ...formOpts,
   onSubmit: async ({ value }) => {
-    // フォームデータを処理
+    // フォームデータで何か処理を行う
     console.log(value)
   },
 })
 ```
 
-`formOptions` を使用せずにスタンドアロンの `useForm` API でフォームインスタンスを作成することも可能です:
+`formOptions` を使用せずにスタンドアロンの `useForm` API を使用してフォームインスタンスを作成することもできます:
 
 ```tsx
 interface User {
@@ -53,7 +53,7 @@ const defaultUser: User = { firstName: '', lastName: '', hobbies: [] }
 const form = useForm({
   defaultValues: defaultUser,
   onSubmit: async ({ value }) => {
-    // フォームデータを処理
+    // フォームデータで何か処理を行う
     console.log(value)
   },
 })
@@ -61,7 +61,7 @@ const form = useForm({
 
 ## フィールド
 
-フィールドは、テキスト入力やチェックボックスなどの単一のフォーム入力要素を表します。フィールドは、フォームインスタンスが提供する `form.Field` コンポーネントを使用して作成します。このコンポーネントは、フォームのデフォルト値のキーと一致する `name` プロパティと、フィールドオブジェクトを引数に取るレンダープロップ関数である `children` プロパティを受け取ります。
+フィールドは、テキスト入力やチェックボックスなどの単一のフォーム入力要素を表します。フィールドは、フォームインスタンスから提供される `form.Field` コンポーネントを使用して作成します。このコンポーネントは、フォームのデフォルト値のキーと一致する `name` プロパティと、フィールドオブジェクトを引数として受け取るレンダープロップ関数である `children` プロパティを受け取ります。
 
 例:
 
@@ -83,7 +83,7 @@ const form = useForm({
 
 ## フィールド状態
 
-各フィールドには、現在の値、検証ステータス、エラーメッセージなどのメタデータを含む独自の状態があります。フィールドの状態には `field.state` プロパティでアクセスできます。
+各フィールドには、現在の値、検証ステータス、エラーメッセージ、その他のメタデータを含む独自の状態があります。フィールドの状態には `field.state` プロパティを使用してアクセスできます。
 
 例:
 
@@ -94,7 +94,11 @@ const {
 } = field.state
 ```
 
-ユーザーがフィールドとどのようにやり取りしているかを確認するのに役立つ3つのフィールド状態があります: ユーザーがクリック/タブでフィールドに入ると「touched」、値が変更されるまでは「pristine」、値が変更されると「dirty」になります。これらの状態は、以下のように `isTouched`、`isPristine`、`isDirty` フラグで確認できます。
+ユーザーがフィールドとどのようにやり取りしているかを確認するのに役立つ、メタデータ内の3つの状態があります:
+
+- _"isTouched"_: ユーザーがフィールドをクリック/タップした後
+- _"isPristine"_: ユーザーがフィールドの値を変更するまで
+- _"isDirty"_: フィールドの値が変更された後
 
 ```tsx
 const { isTouched, isPristine, isDirty } = field.state.meta
@@ -102,13 +106,32 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 
 ![フィールド状態](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
 
-> **`React Hook Form` からの移行に関する重要な注意**: `TanStack/form` の `isDirty` フラグは、RHF の同名フラグとは異なります。
-> RHF では、フォームの値が元の値と異なる場合に `isDirty = true` になります。ユーザーがフォームの値を変更し、再度変更してフォームのデフォルト値と一致する値になった場合、RHF では `isDirty` は `false` になりますが、`TanStack/form` では `true` のままです。
-> デフォルト値は `TanStack/form` のフォームレベルとフィールドレベルで公開されています（`form.options.defaultValues`、`field.options.defaultValue`）。RHF の動作をエミュレートする必要がある場合は、独自の `isDefaultValue()` ヘルパーを記述できます。
+## 異なるライブラリにおける 'isDirty' の理解
+
+非永続的な `dirty` 状態
+
+- **ライブラリ**: React Hook Form (RHF), Formik, Final Form
+- **動作**: フィールドの値がデフォルトと異なる場合に 'dirty' となる。デフォルト値に戻すと 'clean' に戻る
+
+永続的な `dirty` 状態
+
+- **ライブラリ**: Angular Form, Vue FormKit
+- **動作**: 一度変更されると、デフォルト値に戻しても 'dirty' のまま
+
+私たちは永続的な 'dirty' 状態モデルを選択しました。非永続的な 'dirty' 状態もサポートするために、`isDefault` フラグを導入しています。このフラグは非永続的な 'dirty' 状態の逆として機能します。
+
+```tsx
+const { isTouched, isPristine, isDirty, isDefaultValue } = field.state.meta
+
+// 以下の行で非永続的な `dirty` 機能を再現できます
+const nonPersistentIsDirty = !isDefaultValue
+```
+
+![拡張されたフィールド状態](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states-extended.png)
 
 ## フィールドAPI
 
-フィールドAPIは、フィールドを作成する際にレンダープロップ関数に渡されるオブジェクトで、フィールドの状態を操作するためのメソッドを提供します。
+フィールドAPIは、フィールドを作成するときにレンダープロップ関数に渡されるオブジェクトで、フィールドの状態を操作するためのメソッドを提供します。
 
 例:
 
@@ -122,7 +145,7 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 
 ## バリデーション
 
-`@tanstack/react-form` は、同期および非同期のバリデーションを標準で提供しています。バリデーション関数は `form.Field` コンポーネントの `validators` プロパティに渡すことができます。
+`@tanstack/react-form` は、同期および非同期バリデーションを標準で提供しています。バリデーション関数は、`validators` プロパティを使用して `form.Field` コンポーネントに渡すことができます。
 
 例:
 
@@ -138,7 +161,7 @@ const { isTouched, isPristine, isDirty } = field.state.meta
           : undefined,
     onChangeAsync: async ({ value }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000))
-      return value.includes('error') && '名に「error」を含めることはできません'
+      return value.includes('error') && '名に"error"を含めることはできません'
     },
   }}
   children={(field) => (
@@ -154,11 +177,11 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 />
 ```
 
-## 標準スキーマライブラリを使用したバリデーション
+## 標準スキーマライブラリによるバリデーション
 
 手動で作成したバリデーションオプションに加えて、[Standard Schema](https://github.com/standard-schema/standard-schema) 仕様もサポートしています。
 
-この仕様を実装した任意のライブラリを使用してスキーマを定義し、フォームまたはフィールドのバリデータに渡すことができます。
+仕様を実装した任意のライブラリを使用してスキーマを定義し、フォームまたはフィールドバリデータに渡すことができます。
 
 サポートされているライブラリ:
 
@@ -170,9 +193,7 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 import { z } from 'zod'
 
 const userSchema = z.object({
-  age: z
-    .number()
-    .gte(13, 'アカウントを作成するには13歳以上である必要があります'),
+  age: z.number().gte(13, 'アカウント作成には13歳以上である必要があります'),
 })
 
 function App() {
@@ -199,7 +220,7 @@ function App() {
 
 ## リアクティビティ
 
-`@tanstack/react-form` は、フォームとフィールドの状態変更をサブスクライブするためのさまざまな方法を提供しており、特に `useStore(form.store)` フックと `form.Subscribe` コンポーネントが注目されます。これらの方法を使用すると、必要な時だけコンポーネントを更新することで、フォームのレンダリングパフォーマンスを最適化できます。
+`@tanstack/react-form` は、フォームやフィールドの状態変化をサブスクライブするさまざまな方法を提供しており、特に `useStore(form.store)` フックと `form.Subscribe` コンポーネントが注目されます。これらの方法を使用すると、必要な時だけコンポーネントを更新することで、フォームのレンダリングパフォーマンスを最適化できます。
 
 例:
 
@@ -216,21 +237,21 @@ const firstName = useStore(form.store, (state) => state.values.firstName)
 />
 ```
 
-`useStore` フックの `selector` プロパティはオプションですが、これを省略すると不要な再レンダリングが発生するため、強く推奨される点に注意してください。
+`useStore` フックの `selector` プロパティはオプションですが、省略すると不要な再レンダリングが発生するため、提供することを強く推奨します。
 
 ```tsx
-// 正しい使用法
+// 正しい使い方
 const firstName = useStore(form.store, (state) => state.values.firstName)
 const errors = useStore(form.store, (state) => state.errorMap)
-// 誤った使用法
+// 間違った使い方
 const store = useStore(form.store)
 ```
 
-注: リアクティビティを実現するための `useField` フックの使用は推奨されません。このフックは `form.Field` コンポーネント内で慎重に使用するように設計されています。代わりに `useStore(form.store)` の使用を検討してください。
+注: リアクティビティを実現するための `useField` フックの使用は推奨されません。このフックは `form.Field` コンポーネント内で慎重に使用するように設計されています。代わりに `useStore(form.store)` を使用することを検討してください。
 
 ## リスナー
 
-`@tanstack/react-form` では、特定のトリガーに反応してサイドエフェクトをディスパッチする「リスナー」を設定できます。
+`@tanstack/react-form` では、特定のトリガーに反応して副作用をディスパッチする「リスナー」を設定できます。
 
 例:
 
@@ -250,9 +271,9 @@ const store = useStore(form.store)
 
 ## 配列フィールド
 
-配列フィールドを使用すると、趣味のリストなど、フォーム内の値のリストを管理できます。配列フィールドは `mode="array"` プロパティを指定した `form.Field` コンポーネントを使用して作成します。
+配列フィールドを使用すると、趣味のリストなどの値のリストをフォーム内で管理できます。配列フィールドは、`mode="array"` プロパティを指定した `form.Field` コンポーネントを使用して作成します。
 
-配列フィールドを操作する際は、`pushValue`、`removeValue`、`swapValues`、`moveValue` メソッドを使用して、配列内の値を追加、削除、入れ替えできます。
+配列フィールドを操作する際には、`pushValue`、`removeValue`、`swapValues`、`moveValue` メソッドを使用して、配列内の値を追加、削除、交換できます。
 
 例:
 
@@ -332,7 +353,8 @@ const store = useStore(form.store)
 
 ## リセットボタン
 
-`<button type="reset">` を TanStack Form の `form.reset()` と併用する場合、HTMLのデフォルトのリセット動作を防ぐ必要があります（特に `<select>` 要素が初期HTML値にリセットされるのを避けるため）。ボタンの `onClick` ハンドラー内で `event.preventDefault()` を使用して、ネイティブのフォームリセットを防ぎます。
+`<button type="reset">` を TanStack Form の `form.reset()` と組み合わせて使用する場合、特に `<select>` 要素が初期HTML値に予期せずリセットされるのを防ぐために、デフォルトのHTMLリセット動作を防ぐ必要があります。
+ボタンの `onClick` ハンドラ内で `event.preventDefault()` を使用して、ネイティブのフォームリセットを防ぎます。
 
 例:
 
@@ -361,4 +383,4 @@ const store = useStore(form.store)
 </button>
 ```
 
-これらは `@tanstack/react-form` ライブラリで使用される基本的な概念と用語です。これらの概念を理解することで、ライブラリをより効果的に活用し、複雑なフォームを簡単に作成できるようになります。
+これらは `@tanstack/react-form` ライブラリで使用される基本概念と用語です。これらの概念を理解することで、ライブラリをより効果的に使用し、複雑なフォームを簡単に作成できるようになります。

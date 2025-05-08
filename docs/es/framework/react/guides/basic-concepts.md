@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-16T08:45:06.000Z'
-translation-updated-at: '2025-04-30T21:48:43.089Z'
+source-updated-at: '2025-05-08T07:42:29.000Z'
+translation-updated-at: '2025-05-08T23:47:23.997Z'
 id: basic-concepts
 title: Conceptos básicos
 ---
@@ -11,7 +11,7 @@ Esta página introduce los conceptos básicos y la terminología utilizada en la
 
 ## Opciones del Formulario
 
-Puede crear opciones para su formulario para que puedan compartirse entre múltiples formularios utilizando la función `formOptions`.
+Puede crear opciones para su formulario para que pueda ser compartido entre múltiples formularios utilizando la función `formOptions`.
 
 Ejemplo:
 
@@ -96,7 +96,11 @@ const {
 } = field.state
 ```
 
-Hay tres estados de campo que pueden ser útiles para ver cómo interactúa el usuario con un campo: un campo está _"touched"_ (tocado) cuando el usuario hace clic o tabula en él, _"pristine"_ (prístino) hasta que el usuario cambia su valor, y _"dirty"_ (modificado) después de que el valor ha sido cambiado. Puede verificar estos estados a través de las banderas `isTouched`, `isPristine` e `isDirty`, como se muestra a continuación.
+Hay tres estados en los metadatos que pueden ser útiles para ver cómo interactúa el usuario con un campo:
+
+- _"isTouched"_, después de que el usuario hace clic o tabula en el campo
+- _"isPristine"_, hasta que el usuario cambia el valor del campo
+- _"isDirty"_, después de que el valor del campo ha sido cambiado
 
 ```tsx
 const { isTouched, isPristine, isDirty } = field.state.meta
@@ -104,9 +108,28 @@ const { isTouched, isPristine, isDirty } = field.state.meta
 
 ![Estados del campo](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
 
-> **Nota importante para usuarios que vienen de `React Hook Form`**: la bandera `isDirty` en `TanStack/form` es diferente de la bandera con el mismo nombre en RHF.
-> En RHF, `isDirty = true`, cuando los valores del formulario son diferentes de los valores originales. Si el usuario cambia los valores en un formulario y luego los cambia nuevamente para terminar con valores que coinciden con los valores predeterminados del formulario, `isDirty` será `false` en RHF, pero `true` en `TanStack/form`.
-> Los valores predeterminados se exponen tanto a nivel del formulario como del campo en `TanStack/form` (`form.options.defaultValues`, `field.options.defaultValue`), por lo que puede escribir su propia función auxiliar `isDefaultValue()` si necesita emular el comportamiento de RHF.
+## Entendiendo 'isDirty' en Diferentes Bibliotecas
+
+Estado `dirty` no persistente
+
+- **Bibliotecas**: React Hook Form (RHF), Formik, Final Form.
+- **Comportamiento**: Un campo está 'dirty' si su valor difiere del predeterminado. Revertir al valor predeterminado lo vuelve 'clean' nuevamente.
+
+Estado `dirty` persistente
+
+- **Bibliotecas**: Angular Form, Vue FormKit.
+- **Comportamiento**: Un campo permanece 'dirty' una vez cambiado, incluso si se revierte al valor predeterminado.
+
+Hemos elegido el modelo de estado 'dirty' persistente. Para también admitir un estado 'dirty' no persistente, introducimos la bandera `isDefault`. Esta bandera actúa como un inverso del estado 'dirty' no persistente.
+
+```tsx
+const { isTouched, isPristine, isDirty, isDefaultValue } = field.state.meta
+
+// La siguiente línea recreará la funcionalidad `dirty` no persistente.
+const nonPersistentIsDirty = !isDefaultValue
+```
+
+![Estados del campo extendidos](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states-extended.png)
 
 ## API del Campo
 
@@ -124,7 +147,7 @@ Ejemplo:
 
 ## Validación
 
-`@tanstack/react-form` proporciona validación tanto síncrona como asíncrona de forma predeterminada. Las funciones de validación se pueden pasar al componente `form.Field` utilizando la propiedad `validators`.
+`@tanstack/react-form` proporciona validación sincrónica y asincrónica de forma predeterminada. Las funciones de validación se pueden pasar al componente `form.Field` utilizando la propiedad `validators`.
 
 Ejemplo:
 
@@ -160,7 +183,7 @@ Ejemplo:
 
 Además de las opciones de validación personalizadas, también admitimos la especificación [Standard Schema](https://github.com/standard-schema/standard-schema).
 
-Puede definir un esquema utilizando cualquiera de las bibliotecas que implementan la especificación y pasarlo a un validador de formulario o campo.
+Puede definir un esquema utilizando cualquiera de las bibliotecas que implementen la especificación y pasarlo a un validador de formulario o campo.
 
 Las bibliotecas admitidas incluyen:
 
@@ -199,7 +222,7 @@ function App() {
 
 ## Reactividad
 
-`@tanstack/react-form` ofrece varias formas de suscribirse a cambios de estado del formulario y de los campos, más notablemente el hook `useStore(form.store)` y el componente `form.Subscribe`. Estos métodos le permiten optimizar el rendimiento de renderizado de su formulario actualizando solo los componentes cuando sea necesario.
+`@tanstack/react-form` ofrece varias formas de suscribirse a cambios de estado del formulario y campos, más notablemente el hook `useStore(form.store)` y el componente `form.Subscribe`. Estos métodos le permiten optimizar el rendimiento de renderizado de su formulario actualizando solo los componentes cuando sea necesario.
 
 Ejemplo:
 
@@ -246,9 +269,9 @@ Ejemplo:
 />
 ```
 
-Más información se puede encontrar en [Oyentes](./listeners.md)
+Puede encontrar más información en [Oyentes (Listeners)](./listeners.md)
 
-## Campos de Arreglo
+## Campos de Arreglo (Array Fields)
 
 Los campos de arreglo le permiten administrar una lista de valores dentro de un formulario, como una lista de pasatiempos. Puede crear un campo de arreglo utilizando el componente `form.Field` con la propiedad `mode="array"`.
 
@@ -330,10 +353,10 @@ Ejemplo:
 />
 ```
 
-## Botones de Reinicio
+## Botones de Reinicio (Reset Buttons)
 
-Cuando se utiliza `<button type="reset">` junto con `form.reset()` de TanStack Form, debe evitar el comportamiento de reinicio HTML predeterminado para evitar reinicios inesperados de elementos del formulario (especialmente elementos `<select>`) a sus valores HTML iniciales.
-Use `event.preventDefault()` dentro del manejador `onClick` del botón para evitar el reinicio nativo del formulario.
+Cuando se utiliza `<button type="reset">` junto con `form.reset()` de TanStack Form, debe prevenir el comportamiento de reinicio HTML predeterminado para evitar reinicios inesperados de elementos del formulario (especialmente elementos `<select>`) a sus valores HTML iniciales.
+Use `event.preventDefault()` dentro del manejador `onClick` del botón para prevenir el reinicio nativo del formulario.
 
 Ejemplo:
 
@@ -349,7 +372,7 @@ Ejemplo:
 </button>
 ```
 
-Alternativamente, puede usar `<button type="button">` para evitar el reinicio HTML nativo.
+Alternativamente, puede usar `<button type="button">` para prevenir el reinicio HTML nativo.
 
 ```tsx
 <button
@@ -362,4 +385,4 @@ Alternativamente, puede usar `<button type="button">` para evitar el reinicio HT
 </button>
 ```
 
-Estos son los conceptos básicos y la terminología utilizada en la biblioteca `@tanstack/react-form`. Comprender estos conceptos le ayudará a trabajar de manera más efectiva con la biblioteca y crear formularios complejos con facilidad.
+Estos son los conceptos básicos y la terminología utilizados en la biblioteca `@tanstack/react-form`. Comprender estos conceptos le ayudará a trabajar de manera más efectiva con la biblioteca y crear formularios complejos con facilidad.

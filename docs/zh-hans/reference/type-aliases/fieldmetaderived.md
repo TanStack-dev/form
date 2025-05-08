@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-05-06T20:16:46.586Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:40:36.032Z'
 id: FieldMetaDerived
 title: FieldMetaDerived
 ---
@@ -67,6 +67,14 @@ errors: (
 ```
 
 An array of errors related to the field value.
+
+### isDefaultValue
+
+```ts
+isDefaultValue: boolean;
+```
+
+A flag indicating whether the field's current value is the default value
 
 ### isPristine
 

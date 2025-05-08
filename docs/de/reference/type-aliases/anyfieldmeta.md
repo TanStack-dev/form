@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-05-06T20:21:10.165Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:47:24.862Z'
 id: AnyFieldMeta
 title: AnyFieldMeta
 ---
@@ -13,4 +13,4 @@ title: AnyFieldMeta
 type AnyFieldMeta = FieldMeta<any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any>;
 ```
 
-Defined in: [packages/form-core/src/FieldApi.ts:747](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L747)
+Defined in: [packages/form-core/src/FieldApi.ts:751](https://github.com/TanStack/form/blob/main/packages/form-core/src/FieldApi.ts#L751)

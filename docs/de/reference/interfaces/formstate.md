@@ -1,6 +1,6 @@
 ---
-source-updated-at: '2025-04-29T10:22:55.000Z'
-translation-updated-at: '2025-05-06T20:21:10.200Z'
+source-updated-at: '2025-05-08T07:43:38.000Z'
+translation-updated-at: '2025-05-08T23:47:24.827Z'
 id: FormState
 title: FormState
 ---
@@ -9,7 +9,7 @@ title: FormState
 
 # Interface: FormState\<TFormData, TOnMount, TOnChange, TOnChangeAsync, TOnBlur, TOnBlurAsync, TOnSubmit, TOnSubmitAsync, TOnServer\>
 
-Defined in: [packages/form-core/src/FormApi.ts:643](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L643)
+Defined in: [packages/form-core/src/FormApi.ts:647](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L647)
 
 An object representing the current state of the form.
 
@@ -63,7 +63,7 @@ BaseFormState._force_re_eval
 canSubmit: boolean;
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:636](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L636)
+Defined in: [packages/form-core/src/FormApi.ts:640](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L640)
 
 A boolean indicating if the form can be submitted based on its current state.
 
@@ -125,7 +125,7 @@ DerivedFormState.errors
 fieldMeta: Record<DeepKeys<TFormData>, AnyFieldMeta>;
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:640](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L640)
+Defined in: [packages/form-core/src/FormApi.ts:644](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L644)
 
 A record of field metadata for each field in the form.
 
@@ -169,6 +169,24 @@ A boolean indicating if any of the form fields have been blurred.
 
 ```ts
 DerivedFormState.isBlurred
+```
+
+***
+
+### isDefaultValue
+
+```ts
+isDefaultValue: boolean;
+```
+
+Defined in: [packages/form-core/src/FormApi.ts:632](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L632)
+
+A boolean indicating if all of the form's fields are the same as default values.
+
+#### Inherited from
+
+```ts
+DerivedFormState.isDefaultValue
 ```
 
 ***
@@ -371,7 +389,7 @@ DerivedFormState.isTouched
 isValid: boolean;
 ```
 
-Defined in: [packages/form-core/src/FormApi.ts:632](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L632)
+Defined in: [packages/form-core/src/FormApi.ts:636](https://github.com/TanStack/form/blob/main/packages/form-core/src/FormApi.ts#L636)
 
 A boolean indicating if the form and all its fields are valid. Evaluates `true` if there are no errors.
 

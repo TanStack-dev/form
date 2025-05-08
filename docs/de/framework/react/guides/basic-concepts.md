@@ -1,15 +1,15 @@
 ---
-source-updated-at: '2025-04-16T08:45:06.000Z'
-translation-updated-at: '2025-04-30T21:54:28.077Z'
+source-updated-at: '2025-05-08T07:42:29.000Z'
+translation-updated-at: '2025-05-08T23:49:15.520Z'
 id: basic-concepts
 title: Grundkonzepte
 ---
 
-Diese Seite führt die grundlegenden Konzepte und Begriffe ein, die in der `@tanstack/react-form`-Bibliothek verwendet werden. Wenn Sie sich mit diesen Konzepten vertraut machen, können Sie die Bibliothek besser verstehen und damit arbeiten.
+Diese Seite führt die grundlegenden Konzepte und Begriffe ein, die in der `@tanstack/react-form`-Bibliothek verwendet werden. Das Vertrautmachen mit diesen Konzepten hilft Ihnen, die Bibliothek besser zu verstehen und effektiver damit zu arbeiten.
 
-## Formularoptionen
+## Formular-Optionen
 
-Sie können Optionen für Ihr Formular erstellen, damit es zwischen mehreren Formularen gemeinsam genutzt werden kann, indem Sie die Funktion `formOptions` verwenden.
+Sie können Optionen für Ihr Formular erstellen, um sie zwischen mehreren Formularen zu teilen, indem Sie die Funktion `formOptions` verwenden.
 
 Beispiel:
 
@@ -26,9 +26,9 @@ const formOpts = formOptions({
 })
 ```
 
-## Formularinstanz
+## Formular-Instanz
 
-Eine Formularinstanz ist ein Objekt, das ein einzelnes Formular repräsentiert und Methoden und Eigenschaften zur Arbeit mit dem Formular bereitstellt. Sie erstellen eine Formularinstanz mit dem Hook `useForm`, der von den Formularoptionen bereitgestellt wird. Der Hook akzeptiert ein Objekt mit einer `onSubmit`-Funktion, die aufgerufen wird, wenn das Formular abgesendet wird.
+Eine Formular-Instanz ist ein Objekt, das ein individuelles Formular repräsentiert und Methoden sowie Eigenschaften für die Arbeit mit dem Formular bereitstellt. Sie erstellen eine Formular-Instanz mit dem Hook `useForm`, der von den Formular-Optionen bereitgestellt wird. Der Hook akzeptiert ein Objekt mit einer `onSubmit`-Funktion, die beim Absenden des Formulars aufgerufen wird.
 
 ```tsx
 const form = useForm({
@@ -40,7 +40,7 @@ const form = useForm({
 })
 ```
 
-Sie können auch eine Formularinstanz erstellen, ohne `formOptions` zu verwenden, indem Sie die eigenständige `useForm`-API nutzen:
+Sie können auch eine Formular-Instanz ohne `formOptions` erstellen, indem Sie die eigenständige `useForm`-API verwenden:
 
 ```tsx
 interface User {
@@ -61,7 +61,7 @@ const form = useForm({
 
 ## Feld
 
-Ein Feld (Field) repräsentiert ein einzelnes Formulareingabeelement, wie z.B. ein Textfeld oder eine Checkbox. Felder werden mit der Komponente `form.Field` erstellt, die von der Formularinstanz bereitgestellt wird. Die Komponente akzeptiert eine `name`-Prop, die mit einem Schlüssel in den Standardwerten des Formulars übereinstimmen sollte. Sie akzeptiert auch eine `children`-Prop, die eine Render-Prop-Funktion ist, die ein Feldobjekt als Argument erhält.
+Ein Feld repräsentiert ein einzelnes Formular-Eingabeelement, wie z.B. ein Textfeld oder eine Checkbox. Felder werden mit der Komponente `form.Field` erstellt, die von der Formular-Instanz bereitgestellt wird. Die Komponente akzeptiert eine `name`-Prop, die mit einem Schlüssel in den Standardwerten des Formulars übereinstimmen sollte. Sie akzeptiert auch eine `children`-Prop, eine Render-Prop-Funktion, die ein Feldobjekt als Argument erhält.
 
 Beispiel:
 
@@ -81,9 +81,9 @@ Beispiel:
 />
 ```
 
-## Feldzustand
+## Feld-Status
 
-Jedes Feld hat seinen eigenen Zustand (State), der seinen aktuellen Wert, Validierungsstatus, Fehlermeldungen und andere Metadaten enthält. Sie können den Zustand eines Felds über die Eigenschaft `field.state` abrufen.
+Jedes Feld hat seinen eigenen Status, der seinen aktuellen Wert, Validierungsstatus, Fehlermeldungen und weitere Metadaten enthält. Sie können den Status eines Felds über die Eigenschaft `field.state` abrufen.
 
 Beispiel:
 
@@ -94,21 +94,44 @@ const {
 } = field.state
 ```
 
-Es gibt drei Feldzustände, die nützlich sein können, um zu sehen, wie der Benutzer mit einem Feld interagiert: Ein Feld ist _"touched"_ (berührt), wenn der Benutzer hineinklickt/-tabuliert, _"pristine"_ (unverändert), bis der Benutzer den Wert ändert, und _"dirty"_ (verändert), nachdem der Wert geändert wurde. Sie können diese Zustände über die Flags `isTouched`, `isPristine` und `isDirty` überprüfen, wie unten gezeigt.
+Es gibt drei Status in den Metadaten, die nützlich sein können, um die Interaktion des Benutzers mit einem Feld nachzuvollziehen:
+
+- _"isTouched"_, nachdem der Benutzer in das Feld geklickt/getabt hat
+- _"isPristine"_, bis der Benutzer den Feldwert ändert
+- _"isDirty"_, nachdem der Feldwert geändert wurde
 
 ```tsx
 const { isTouched, isPristine, isDirty } = field.state.meta
 ```
 
-![Feldzustände](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
+![Feld-Status](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states.png)
 
-> **Wichtiger Hinweis für Benutzer von `React Hook Form`**: Das `isDirty`-Flag in `TanStack/form` unterscheidet sich von dem Flag mit demselben Namen in RHF.
-> In RHF ist `isDirty = true`, wenn die Formularwerte von den ursprünglichen Werten abweichen. Wenn der Benutzer die Werte in einem Formular ändert und sie dann wieder ändert, sodass sie mit den Standardwerten des Formulars übereinstimmen, ist `isDirty` in RHF `false`, aber in `TanStack/form` `true`.
-> Die Standardwerte sind sowohl auf Formular- als auch auf Feldebene in `TanStack/form` verfügbar (`form.options.defaultValues`, `field.options.defaultValue`), sodass Sie Ihre eigene `isDefaultValue()`-Hilfsfunktion schreiben können, wenn Sie das Verhalten von RHF nachbilden müssen.
+## Verständnis von 'isDirty' in verschiedenen Bibliotheken
+
+Nicht-persistenter `dirty`-Status
+
+- **Bibliotheken**: React Hook Form (RHF), Formik, Final Form.
+- **Verhalten**: Ein Feld ist 'dirty', wenn sein Wert vom Standardwert abweicht. Die Rückkehr zum Standardwert macht es wieder 'clean'.
+
+Persistenter `dirty`-Status
+
+- **Bibliotheken**: Angular Form, Vue FormKit.
+- **Verhalten**: Ein Feld bleibt 'dirty', sobald es geändert wurde, selbst wenn es auf den Standardwert zurückgesetzt wird.
+
+Wir haben uns für das Modell des persistenten 'dirty'-Status entschieden. Um auch einen nicht-persistenten 'dirty'-Status zu unterstützen, führen wir das Flag `isDefault` ein. Dieses Flag fungiert als Umkehrung des nicht-persistenten 'dirty'-Status.
+
+```tsx
+const { isTouched, isPristine, isDirty, isDefaultValue } = field.state.meta
+
+// Die folgende Zeile reproduziert die Funktionalität des nicht-persistenten `dirty`-Status.
+const nonPersistentIsDirty = !isDefaultValue
+```
+
+![Erweiterte Feld-Status](https://raw.githubusercontent.com/TanStack/form/main/docs/assets/field-states-extended.png)
 
 ## Feld-API
 
-Die Feld-API (Field API) ist ein Objekt, das an die Render-Prop-Funktion übergeben wird, wenn ein Feld erstellt wird. Sie bietet Methoden zur Arbeit mit dem Zustand des Felds.
+Die Feld-API ist ein Objekt, das an die Render-Prop-Funktion übergeben wird, wenn ein Feld erstellt wird. Sie bietet Methoden für die Arbeit mit dem Feldstatus.
 
 Beispiel:
 
@@ -138,7 +161,7 @@ Beispiel:
           : undefined,
     onChangeAsync: async ({ value }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000))
-      return value.includes('error') && '„error“ ist im Vornamen nicht erlaubt'
+      return value.includes('error') && '"error" ist im Vornamen nicht erlaubt'
     },
   }}
   children={(field) => (
@@ -158,9 +181,9 @@ Beispiel:
 
 Zusätzlich zu manuell erstellten Validierungsoptionen unterstützen wir auch die [Standard-Schema](https://github.com/standard-schema/standard-schema)-Spezifikation.
 
-Sie können ein Schema mit einer der Bibliotheken definieren, die die Spezifikation implementieren, und es einem Formular- oder Feldvalidator übergeben.
+Sie können ein Schema mit einer der Bibliotheken definieren, die die Spezifikation implementieren, und es einem Formular- oder Feld-Validator übergeben.
 
-Unterstützte Bibliotheken umfassen:
+Unterstützte Bibliotheken sind:
 
 - [Zod](https://zod.dev/)
 - [Valibot](https://valibot.dev/)
@@ -202,7 +225,7 @@ function App() {
 
 ## Reaktivität
 
-`@tanstack/react-form` bietet verschiedene Möglichkeiten, um Änderungen am Formular- und Feldzustand zu abonnieren, insbesondere den Hook `useStore(form.store)` und die Komponente `form.Subscribe`. Diese Methoden ermöglichen es Ihnen, die Rendering-Performance Ihres Formulars zu optimieren, indem Komponenten nur bei Bedarf aktualisiert werden.
+`@tanstack/react-form` bietet verschiedene Möglichkeiten, um Änderungen am Formular- und Feldstatus zu abonnieren, insbesondere den Hook `useStore(form.store)` und die Komponente `form.Subscribe`. Diese Methoden ermöglichen es Ihnen, die Rendering-Performance Ihres Formulars zu optimieren, indem Komponenten nur bei Bedarf aktualisiert werden.
 
 Beispiel:
 
@@ -219,7 +242,7 @@ const firstName = useStore(form.store, (state) => state.values.firstName)
 />
 ```
 
-Es ist wichtig zu beachten, dass die `selector`-Prop des `useStore`-Hooks optional ist, aber dringend empfohlen wird, da das Weglassen zu unnötigen Neu-Renderings führt.
+Es ist wichtig zu beachten, dass die `selector`-Prop des `useStore`-Hooks optional ist, aber dringend empfohlen wird, da das Weglassen unnötige Neu-Renderings verursacht.
 
 ```tsx
 // Korrekte Verwendung
@@ -229,11 +252,11 @@ const errors = useStore(form.store, (state) => state.errorMap)
 const store = useStore(form.store)
 ```
 
-Hinweis: Die Verwendung des `useField`-Hooks zur Erzielung von Reaktivität wird nicht empfohlen, da er gezielt innerhalb der `form.Field`-Komponente verwendet werden soll. Stattdessen können Sie `useStore(form.store)` verwenden.
+Hinweis: Die Verwendung des `useField`-Hooks zur Erzielung von Reaktivität wird nicht empfohlen, da er gezielt innerhalb der `form.Field`-Komponente verwendet werden sollte. Stattdessen können Sie `useStore(form.store)` verwenden.
 
 ## Listener
 
-`@tanstack/react-form` ermöglicht es Ihnen, auf bestimmte Trigger zu reagieren und sie zu "überwachen", um Nebenwirkungen auszulösen.
+`@tanstack/react-form` ermöglicht es Ihnen, auf bestimmte Trigger zu reagieren und diese zu "überwachen", um Nebenwirkungen auszulösen.
 
 Beispiel:
 
@@ -249,13 +272,13 @@ Beispiel:
 />
 ```
 
-Weitere Informationen finden Sie unter [Listener](./listeners.md).
+Weitere Informationen finden Sie unter [Listener](./listeners.md)
 
 ## Array-Felder
 
-Array-Felder (Array Fields) ermöglichen es Ihnen, eine Liste von Werten innerhalb eines Formulars zu verwalten, wie z.B. eine Liste von Hobbys. Sie können ein Array-Feld mit der `form.Field`-Komponente und der `mode="array"`-Prop erstellen.
+Array-Felder ermöglichen es Ihnen, eine Liste von Werten innerhalb eines Formulars zu verwalten, wie z.B. eine Liste von Hobbys. Sie können ein Array-Feld mit der `form.Field`-Komponente und der `mode="array"`-Prop erstellen.
 
-Bei der Arbeit mit Array-Feldern können Sie die Methoden `pushValue`, `removeValue`, `swapValues` und `moveValue` verwenden, um Werte im Array hinzuzufügen, zu entfernen und zu vertauschen.
+Bei der Arbeit mit Array-Feldern können Sie die Methoden `pushValue`, `removeValue`, `swapValues` und `moveValue` verwenden, um Werte im Array hinzuzufügen, zu entfernen oder zu vertauschen.
 
 Beispiel:
 
@@ -335,7 +358,7 @@ Beispiel:
 
 ## Reset-Buttons
 
-Wenn Sie `<button type="reset">` in Verbindung mit `form.reset()` von TanStack Form verwenden, müssen Sie das standardmäßige HTML-Reset-Verhalten verhindern, um unerwartete Zurücksetzungen von Formularelementen (insbesondere `<select>`-Elementen) auf ihre anfänglichen HTML-Werte zu vermeiden.
+Wenn Sie `<button type="reset">` in Kombination mit `form.reset()` von TanStack Form verwenden, müssen Sie das standardmäßige HTML-Reset-Verhalten verhindern, um unerwartete Zurücksetzungen von Formularelementen (insbesondere `<select>`-Elementen) auf ihre initialen HTML-Werte zu vermeiden.
 Verwenden Sie `event.preventDefault()` im `onClick`-Handler des Buttons, um das native Formular-Reset zu verhindern.
 
 Beispiel:
@@ -365,4 +388,4 @@ Alternativ können Sie `<button type="button">` verwenden, um das native HTML-Re
 </button>
 ```
 
-Dies sind die grundlegenden Konzepte und Begriffe, die in der `@tanstack/react-form`-Bibliothek verwendet werden. Wenn Sie diese Konzepte verstehen, können Sie effektiver mit der Bibliothek arbeiten und komplexe Formulare mühelos erstellen.
+Dies sind die grundlegenden Konzepte und Begriffe, die in der `@tanstack/react-form`-Bibliothek verwendet werden. Das Verständnis dieser Konzepte hilft Ihnen, effektiver mit der Bibliothek zu arbeiten und komplexe Formulare mühelos zu erstellen.
